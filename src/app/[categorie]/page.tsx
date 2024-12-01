@@ -30,7 +30,7 @@ export async function generateMetadata({
     const { data } = await fetchData(`categorie/shop/${categorie}`);
 
     return {
-      title: data?.title || "Default Title",
+      title: data?.title || "Default Title", 
       description: data?.meta_description || "Default Description",
       // openGraph: {
       //   images: [{ url: data?.canonical_url || "/default-image.jpg" }],
