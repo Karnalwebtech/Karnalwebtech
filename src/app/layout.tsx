@@ -94,7 +94,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Footer />
         </StoreProvider> 
         <Analytics />
-        <SpeedInsights/>
+        <SpeedInsights/>   
       </body>
     </html>
   );
