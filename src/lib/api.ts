@@ -1,6 +1,6 @@
-export const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://invent-mlo7.onrender.com/api";
+export const apiUrl = process.env.API_BASE_URL || "https://invent-mlo7.onrender.com/api";
 import { notFound } from "next/navigation";
-
+console.log(apiUrl)
 export async function fetchData(path: string): Promise<any> {
   try {
     // Make the API request
