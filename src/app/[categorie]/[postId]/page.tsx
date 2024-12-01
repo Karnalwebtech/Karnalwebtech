@@ -51,6 +51,7 @@ export default async function Blog({
       </div>
     );
   } catch (error) {
+    console.log(error)
     // If it's a NEXT_NOT_FOUND error, let it propagate
     if (error instanceof Error && error.message === 'NEXT_NOT_FOUND') {
       throw error;
