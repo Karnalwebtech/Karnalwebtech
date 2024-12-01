@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Montserrat_Alternates } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css"; // Global CSS file
 import { Toaster } from "react-hot-toast";
 import Header from "@/module/layout/header/Header";
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Footer />
         </StoreProvider>
         <Analytics />
+        <SpeedInsights/>
       </body>
     </html>
   );
