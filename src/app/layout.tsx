@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Montserrat_Alternates } from "next/font/google";
-
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css"; // Global CSS file
 import { Toaster } from "react-hot-toast";
 import Header from "@/module/layout/header/Header";
@@ -92,6 +92,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Toaster />
           <Footer />
         </StoreProvider>
+        <Analytics />
       </body>
     </html>
   );
