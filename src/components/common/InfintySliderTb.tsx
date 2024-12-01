@@ -10,9 +10,12 @@ export default function InfintySliderTb() {
     const [currentIndex, setCurrentIndex] = React.useState(0)
 
     const images = [
-        "/upload/3d-rendering-website-hosting-concept_23-2149484778.jpg",
-        "/upload/2149484780.jpg",
-        "/upload/flat-design-data-privacy-template_23-2149325754.jpg",
+        "/assets/karnalwebtech cms.webp",
+        "/assets/karnalwebtech marketing.webp",
+        "/assets/karnalwebtech seo (2).webp",
+        "/assets/karnalwebtech seo.webp",
+        "/assets/karnalwebtech website desgine.webp",
+        "/assets/karnalwebtech website.webp",
     ];
     React.useEffect(() => {
         const timer = setInterval(() => {
