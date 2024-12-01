@@ -88,7 +88,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={montserrat_Alternates.className}>
         <StoreProvider>
-          <Header />
+          <Header /> 
           {children}
           <Toaster />
           <Footer />
