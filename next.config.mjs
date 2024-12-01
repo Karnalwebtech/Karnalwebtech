@@ -13,6 +13,22 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        destination: "/504",
+        statusCode: 307,
+        has: [
+          {
+            type: "header",
+            key: "x-middleware-rewrite",
+            value: "(?<!/504)",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
