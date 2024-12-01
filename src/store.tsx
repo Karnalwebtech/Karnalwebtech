@@ -51,7 +51,6 @@ const rootReducer = combineReducers({
   [Post_Api.reducerPath]: Post_Api.reducer,
   [Categorie_Api.reducerPath]: Categorie_Api.reducer,
   [Portfolio_Api.reducerPath]: Portfolio_Api.reducer,
-
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -69,7 +68,7 @@ export const makeStore = () => {
       })
         .concat(Post_Api.middleware)
         .concat(Categorie_Api.middleware)
-        .concat(Portfolio_Api.middleware)
+        .concat(Portfolio_Api.middleware),
   });
 };
 /* REDUX TYPES */
