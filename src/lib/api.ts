@@ -15,7 +15,7 @@ export async function fetchData(path: string): Promise<any> {
 
     // Check for other unsuccessful responses
     if (!response.ok) {
-      throw new Error(`Failed to fetch data: ${response.statusText}`);
+      throw new Error(`Failed to fetch data: ${response.statusText}`); 
     }
 
     // Return the parsed JSON data if the response is successful
