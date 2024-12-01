@@ -22,6 +22,8 @@ export default function Footer() {
               <Link href="/about-us" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</Link>
               <Link href="/contact-us" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
               <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy policy</Link>
+              <Link href="/terms-conditions " className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms & conditions </Link>
+              <Link href="/faq " className="text-sm text-muted-foreground hover:text-foreground transition-colors">Faq </Link>
             </nav>
           </div>
           <div className="space-y-4">

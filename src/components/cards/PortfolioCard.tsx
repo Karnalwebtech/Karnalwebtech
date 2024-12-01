@@ -19,7 +19,7 @@ export default function PortfolioCard({
                 <iframe
                     src={item.description}
                     title={item.title}
-                    className="w-full h-[calc(100vh-300px)] border-none"
+                    className="w-full h-[400px] border-none"
                 />
                 <Link href={item.description} target="_blank" rel="noopener noreferrer">{item.description}</Link>
             </div>

@@ -1,111 +1,139 @@
-'use client'
-
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { ChevronUp } from 'lucide-react'
+import Link from "next/link";
 
 export default function Index() {
-  const [showBackToTop, setShowBackToTop] = useState(false)
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const scrollTop = e.currentTarget.scrollTop
-    setShowBackToTop(scrollTop > 300)
-  }
-
-  const scrollToTop = () => {
-    document.getElementById('privacy-policy-top')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  const policyItems = [
-    {
-      title: "Information We Collect",
-      content: "We collect information you provide directly to us, such as when you create an account, fill out a form, or communicate with us. This may include your name, email address, phone number, and any other information you choose to provide. We also automatically collect certain information about your device and how you interact with our website using cookies and similar technologies."
-    },
-    {
-      title: "How We Use Your Information",
-      content: "We use the information we collect to provide, maintain, and improve our services, to communicate with you, to send you marketing communications (if you've opted in), to monitor and analyze trends and usage, to detect and prevent fraudulent transactions and other illegal activities, and to personalize your experience on our website."
-    },
-    {
-      title: "Information Sharing and Disclosure",
-      content: "We may share your information with third-party vendors, consultants, and other service providers who need access to such information to carry out work on our behalf. We may also share information when we believe it's necessary to comply with the law, to protect our rights and safety, or to protect the rights and safety of others."
-    },
-    {
-      title: "Data Retention",
-      content: "We retain your personal information for as long as necessary to fulfill the purposes outlined in this privacy policy, unless a longer retention period is required or permitted by law. When we no longer need to use your information, we will remove it from our systems or anonymize it."
-    },
-    {
-      title: "Your Rights and Choices",
-      content: "Depending on your location, you may have certain rights regarding your personal information, such as the right to access, correct, or delete your data. You can update your account information at any time by logging into your account settings. You may also opt out of receiving promotional communications from us by following the instructions in those messages."
-    },
-    {
-      title: "Security",
-      content: "We take reasonable measures to help protect your personal information from loss, theft, misuse, unauthorized access, disclosure, alteration, and destruction. However, no security system is impenetrable, and we cannot guarantee the security of our systems 100%."
-    },
-    {
-      title: "Changes to This Policy",
-      content: "We may update this privacy policy from time to time. If we make significant changes, we will notify you by email or by posting a notice on our website prior to the change becoming effective."
-    },
-    {
-      title: "Contact Us",
-      content: "If you have any questions about this privacy policy or our practices, please contact us at privacy@karnalwebtech.com or by mail at: Karnal Web Tech, 123 Web Dev Street, Karnal, Haryana 132001, India."
-    }
-  ]
-
   return (
-    <ScrollArea className="h-[calc(100vh-4rem)]" onScrollCapture={handleScroll}>
-      <div className="container mx-auto px-4 py-8" id="privacy-policy-top">
-        <motion.h1 
-          className="text-4xl font-bold mb-8 text-center"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Privacy Policy
-        </motion.h1>
-        <Card>
-          <CardHeader>
-            <CardTitle>Karnal Web Tech Privacy Policy</CardTitle>
-            <CardDescription>Last updated: {new Date().toLocaleDateString()}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              At Karnal Web Tech, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
-            </p>
-            <Accordion type="single" collapsible className="w-full">
-              {policyItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <AccordionItem value={`item-${index}`}>
-                    <AccordionTrigger>{item.title}</AccordionTrigger>
-                    <AccordionContent>{item.content}</AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-              ))}
-            </Accordion>
-          </CardContent>
-        </Card>
-        {showBackToTop && (
-          <motion.div
-            className="fixed bottom-4 right-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Button onClick={scrollToTop} size="icon" variant="outline">
-              <ChevronUp className="h-4 w-4" />
-            </Button>
-          </motion.div>
-        )}
+    <div className="bg-gray-100 text-gray-800">
+      <div className="bg-black text-white py-6">
+        <div className="container mx-auto text-center">
+          <h1 className="text-3xl font-bold">Privacy Policy</h1>
+          <p className="text-sm mt-1">Effective Date: [Insert Date]</p>
+        </div>
       </div>
-    </ScrollArea>
-  )
+      <div className="container mx-auto px-6 py-10">
+        {/* <!-- Introduction Section --> */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
+          <p className="text-gray-700 leading-6">
+            Welcome to <span className="font-bold">Karnal Web Tech</span>. We
+            are committed to protecting your privacy and ensuring the security
+            of your personal information. This Privacy Policy outlines how we
+            collect, use, and safeguard your data when you visit our website or
+            use our services.
+          </p>
+        </section>
+
+        {/* <!-- Information We Collect --> */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">
+            Information We Collect
+          </h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+            <li>
+              <strong>Personal Information:</strong> Name, email address, phone
+              number, billing information.
+            </li>
+            <li>
+              <strong>Non-Personal Information:</strong> Browser type, IP
+              address, device information.
+            </li>
+            <li>
+              <strong>Cookies:</strong> Used to enhance your browsing experience
+              and analyze user behavior.
+            </li>
+          </ul>
+        </section>
+
+        {/* <!-- How We Use Your Information --> */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">
+            How We Use Your Information
+          </h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+            <li>
+              <strong>To Provide and Improve Services:</strong> Process
+              transactions, improve website performance.
+            </li>
+            <li>
+              <strong>Marketing and Communication:</strong> Send updates or
+              promotional emails.
+            </li>
+            <li>
+              <strong>Legal Compliance:</strong> Fulfill legal obligations and
+              prevent fraud.
+            </li>
+          </ul>
+        </section>
+
+        {/* <!-- Data Security --> */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">Data Security</h2>
+          <p className="text-gray-700 leading-6">
+            We implement robust security measures to protect your data from
+            unauthorized access. However, no method of transmission over the
+            Internet or electronic storage is 100% secure.
+          </p>
+        </section>
+
+        {/* <!-- Your Rights --> */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">Your Rights</h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+            <li>
+              <strong>Access:</strong> Request access to the personal data we
+              have collected.
+            </li>
+            <li>
+              <strong>Correction:</strong> Request corrections to inaccurate or
+              incomplete data.
+            </li>
+            <li>
+              <strong>Deletion:</strong> Request deletion of your personal data,
+              subject to legal obligations.
+            </li>
+            <li>
+              <strong>Opt-Out:</strong> Unsubscribe from promotional
+              communications.
+            </li>
+          </ul>
+        </section>
+
+        {/* <!-- Changes to This Policy --> */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">
+            Changes to This Policy
+          </h2>
+          <p className="text-gray-700 leading-6">
+            We may update this Privacy Policy periodically. Any changes will be
+            posted here. Please review this page regularly to stay informed.
+          </p>
+        </section>
+
+        {/* <!-- Contact Us --> */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
+          <p className="text-gray-700 leading-6">
+            If you have any questions about this Privacy Policy, contact us:
+          </p>
+          <div className="mt-4 space-y-2">
+            <p>
+              <strong>Email:</strong>{" "}
+              <Link
+                href="mailto:karnalwebtech@gmail.com"
+                className="text-blue-600"
+              >
+                karnalwebtech@gmail.com
+              </Link>
+            </p>
+            <p>
+              <strong>Phone:</strong>{" "}
+              <Link href={"tel:+918816041566"}>+918816041566</Link>
+            </p>
+            <p>
+              <strong>Address:</strong> Karnal Web Tech, Karnal, Haryana, India
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
 }
