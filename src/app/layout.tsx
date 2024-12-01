@@ -92,7 +92,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           {children}
           <Toaster />
           <Footer />
-        </StoreProvider>
+        </StoreProvider> 
         <Analytics />
         <SpeedInsights/>
       </body>
