@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import * as React from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,31 +13,31 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@/components/ui/sheet'
-import { Menu, Search } from 'lucide-react'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar' // Added missing imports
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, Search } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; // Added missing imports
+import Image from "next/image";
 
 const navItems = [
-  { name: 'Projects', path: '/projects' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'About us', path: '/about-us' },
-]
+  { name: "Projects", path: "/projects" },
+  { name: "Blog", path: "/blog" },
+  { name: "About us", path: "/about-us" },
+];
 
 export default function Header() {
-  const pathname = usePathname()
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false)
+  const pathname = usePathname();
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   return (
     <header className="sticky px-2 top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container max-w-[1280px] m-auto flex h-16 items-center">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden">
+            <Button
+              variant="ghost"
+              className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+            >
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle Menu</span>
             </Button>
@@ -62,8 +62,14 @@ export default function Header() {
           </SheetContent>
         </Sheet>
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="h-6 w-6 rounded-full bg-primary" />
-          <span className="font-bold">Acme Inc</span>
+          <div className="h-[60px] w-[100px] relative">
+            <Image
+              src="/assets/logo.png"
+              alt="Karnalwebtech"
+              fill
+              className="object-contain"
+            />
+          </div>
         </Link>
         <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
           {navItems.map((item) => (
@@ -82,7 +88,9 @@ export default function Header() {
           ))}
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <div className={cn("hidden lg:flex relative", isSearchOpen && "flex")}>
+          <div
+            className={cn("hidden lg:flex relative", isSearchOpen && "flex")}
+          >
             <Input
               type="search"
               placeholder="Search..."
@@ -101,7 +109,11 @@ export default function Header() {
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative rounded-full">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative rounded-full"
+              >
                 <Avatar className="h-8 w-8" key={"1"}>
                   <AvatarImage src="/avatars/01.png" alt="@username" />
                   <AvatarFallback>U</AvatarFallback>
@@ -109,7 +121,6 @@ export default function Header() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -121,5 +132,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
