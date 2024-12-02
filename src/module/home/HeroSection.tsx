@@ -31,7 +31,7 @@ export default function HeroSection() {
       className="relative overflow-hidden"
       animate={backgroundAnimation}
       style={{
-        backgroundImage: "url(./upload/background.jpg)",
+        backgroundImage: "url(./assets/background.jpg)",
         backgroundSize: "cover  ",
         perspective: 1000,
         backgroundRepeat: "no-repeat",
