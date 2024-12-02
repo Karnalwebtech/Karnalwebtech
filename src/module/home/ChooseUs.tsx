@@ -46,13 +46,13 @@ export default function ChooseUs() {
     <section className="py-16 px-4 bg-white">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-8 items-center mb-12">
-          <div className="relative">
+        <div className="h-[200px] max-w-[400px] m-auto w-full pb-2 relative">
             <Image
-              src="/upload/people-creating-social-media-landing-page_52683-38062.jpg"
+              src="/assets/karnalwebtechfaq.png"
               alt="Businessman with checklist"
-              width={100}
-              height={100}
-              className="w-full max-w-md mx-auto"
+              fill
+              priority
+              className="object-contain"
             />
           </div>
           <div>

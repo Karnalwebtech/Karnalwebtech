@@ -57,7 +57,7 @@ export default function HeroSection() {
               size="lg"
               className="bg-white text-black hover:bg-indigo-100"
             >
-              Discover My Work
+              Discover Our Work
             </Button>
           </div>
           <div className="w-full lg:w-[60%]">

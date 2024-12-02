@@ -62,10 +62,13 @@ export default function Header() {
           </SheetContent>
         </Sheet>
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <div className="h-[60px] w-[100px] relative">
+          <div className="h-[70px] w-[190px] mt-2 pb-2 relative">
             <Image
               src="/assets/logo.png"
               alt="Karnalwebtech"
+              blurDataURL="/assets/placeholder-logo.png"
+              placeholder="blur"
+              priority
               fill
               className="object-contain"
             />
