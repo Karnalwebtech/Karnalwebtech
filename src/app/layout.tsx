@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       "Karnal Web Tech | Expert Web Development & Digital Solutions for Your Business",
     description:
       "professional web development, innovative digital marketing, and cutting-edge IT solutions with Karnal Web Tech. Empowering businesses in Haryana to achieve online success with tailored strategies and expert support.",
-    url: "https://karnalwebtech-xi.vercel.app",
+    url: "https://thesalesmens.com",
     siteName: "KarnalWebTech",
     images: [
       {
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   robots: "index, follow",
   // viewport: "width=device-width, initial-scale=1",
   alternates: {
-    canonical: "https://karnalwebtech-xi.vercel.app",
+    canonical: "https://thesalesmens.com",
   },
 };
 

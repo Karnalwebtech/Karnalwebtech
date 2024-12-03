@@ -26,27 +26,40 @@ interface SlugPageProps {
 export async function generateMetadata({
   params: { categorie },
 }: SlugPageProps): Promise<Metadata> {
-  try {
-    const { data } = await fetchData(`categorie/shop/${categorie}`);
+  const { data } = await fetchData(`categorie/shop/${categorie}`);
 
-    return {
-      title: data?.title || "Default Title", 
-      description: data?.meta_description || "Default Description",
-      // openGraph: {
-      //   images: [{ url: data?.canonical_url || "/default-image.jpg" }],
-      // },
-    };
-  } catch (error) {
-    // If it's a NEXT_NOT_FOUND error, let it propagate
-    if (error instanceof Error && error.message === 'NEXT_NOT_FOUND') {
-      throw error;
-    }
-    // For other errors, return a fallback metadata
-    return {
-      title: 'Post Not Found',
-      // ... other fallback metadata
-    };
-  }
+  return {
+    title: data?.seo?.title,
+    description: data?.seo?.meta_description,
+    openGraph: {
+      title: data?.seo?.title,
+      description: data?.seo?.meta_description,
+      url: "https://thesalesmens.com",
+      siteName: "KarnalWebTech",
+      images: [
+        {
+          url: data?.feature_image?.path,
+          width: 800,
+          height: 600,
+          alt: data?.feature_image?.altText || data?.seo?.title,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@KarnalWebTech",
+      title: data?.seo?.title,
+      description: data?.seo?.meta_description,
+      images: [data?.feature_image?.path],
+    },
+    robots: "index, follow",
+    // viewport: "width=device-width, initial-scale=1",
+    alternates: {
+      canonical: "https://thesalesmens.com",
+    },
+  };
 }
 
 // Memoized component for better performance
@@ -62,7 +75,7 @@ export default async function Page({ params: { categorie } }: SlugPageProps) {
     );
   } catch (error) {
     // If it's a NEXT_NOT_FOUND error, let it propagate
-    if (error instanceof Error && error.message === 'NEXT_NOT_FOUND') {
+    if (error instanceof Error && error.message === "NEXT_NOT_FOUND") {
       throw error;
     }
     // For other errors, you can render an error state
