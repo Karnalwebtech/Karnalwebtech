@@ -66,8 +66,8 @@ export default function Header() {
             <Image
               src="/assets/logo.png"
               alt="Karnalwebtech"
-              blurDataURL="/assets/placeholder-logo.png"
-              placeholder="blur"
+              // blurDataURL="/assets/placeholder-logo.png"
+              // placeholder="blur"
               priority
               fill
               className="object-contain"
@@ -118,7 +118,7 @@ export default function Header() {
                 className="relative rounded-full"
               >
                 <Avatar className="h-8 w-8" key={"1"}>
-                  <AvatarImage src="/avatars/01.png" alt="@username" />
+                 {/* ?? <AvatarImage src="/avatars/01.png" alt="@username" /> */}
                   <AvatarFallback>U</AvatarFallback>
                 </Avatar>
               </Button>
