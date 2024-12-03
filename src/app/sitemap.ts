@@ -12,7 +12,7 @@ interface Post {
 
 type ChangeFrequency = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 
-// Simple in-memory cache
+// Implement a simple cache
 const cache: { [key: string]: { data: any; timestamp: number } } = {};
 const CACHE_TTL = 3600000; // 1 hour in milliseconds
 
@@ -36,12 +36,14 @@ const createSitemapEntry = (
   url: string,
   changeFrequency: ChangeFrequency,
   priority: number
-) => ({
+): MetadataRoute.Sitemap[number] => ({
   url: url.replace(/\/+$/, ""),
   lastModified: new Date().toISOString(),
   changeFrequency,
   priority,
 });
+
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://thesalesmens.com";
@@ -65,7 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       )
     ) || [];
 
-  const staticRoutes = [
+  const staticRoutes: MetadataRoute.Sitemap = [
     "",
     "/contact-us",
     "/blog",
