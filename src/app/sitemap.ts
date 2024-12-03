@@ -10,50 +10,60 @@ interface Post {
   categorie: { slug: string }[];
 }
 
-// Define the possible values for changeFrequency explicitly
 type ChangeFrequency = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
+
+// Simple in-memory cache
+const cache: { [key: string]: { data: any; timestamp: number } } = {};
+const CACHE_TTL = 3600000; // 1 hour in milliseconds
+
+async function cachedFetchData(endpoint: string) {
+  const now = Date.now();
+  if (cache[endpoint] && now - cache[endpoint].timestamp < CACHE_TTL) {
+    return cache[endpoint].data;
+  }
+
+  try {
+    const { data } = await fetchData(endpoint);
+    cache[endpoint] = { data, timestamp: now };
+    return data;
+  } catch (error) {
+    console.error(`Error fetching ${endpoint}:`, error);
+    return null;
+  }
+}
+
+const createSitemapEntry = (
+  url: string,
+  changeFrequency: ChangeFrequency,
+  priority: number
+) => ({
+  url: url.replace(/\/+$/, ""),
+  lastModified: new Date().toISOString(),
+  changeFrequency,
+  priority,
+});
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://thesalesmens.com";
 
-  // Utility function to create sitemap entries
-  const createSitemapEntry = (
-    url: string,
-    changeFrequency: ChangeFrequency,
-    priority: number
-  ) => ({
-    url: url.replace(/\/+$/, ""), // Remove trailing slash
-    lastModified: new Date().toISOString(), // Current date in ISO 8601 format
-    changeFrequency,
-    priority,
-  });
+  const [categoryData, postData] = await Promise.all([
+    cachedFetchData("categorie"),
+    cachedFetchData("post/store"),
+  ]);
 
-  let categorySitemap: MetadataRoute.Sitemap = [];
-  let postSitemap: MetadataRoute.Sitemap = [];
+  const categorySitemap: MetadataRoute.Sitemap =
+    (categoryData?.result as ShopCategory[])?.map((category) =>
+      createSitemapEntry(`${baseUrl}/${category.slug}`, "weekly", 0.7)
+    ) || [];
 
-  try {
-    const { data: categoryData } = await fetchData("categorie");
-    categorySitemap =
-      (categoryData?.result as ShopCategory[])?.map((category) =>
-        createSitemapEntry(`${baseUrl}/${category.slug}`, "weekly", 0.7)
-      ) || [];
-  } catch (error) {
-    console.error("Error fetching categories:", error);
-  }
-
-  try {
-    const { data: postData } = await fetchData("post/store");
-    postSitemap =
-      (postData?.result as Post[])?.map((post) =>
-        createSitemapEntry(
-          `${baseUrl}/${post.categorie[0]?.slug}/${post.slug}`,
-          "weekly",
-          0.7
-        )
-      ) || [];
-  } catch (error) {
-    console.error("Error fetching posts:", error);
-  }
+  const postSitemap: MetadataRoute.Sitemap =
+    (postData?.result as Post[])?.map((post) =>
+      createSitemapEntry(
+        `${baseUrl}/${post.categorie[0]?.slug}/${post.slug}`,
+        "weekly",
+        0.7
+      )
+    ) || [];
 
   const staticRoutes = [
     "",
@@ -68,3 +78,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [...staticRoutes, ...categorySitemap, ...postSitemap];
 }
+
