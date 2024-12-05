@@ -1,8 +1,8 @@
 import { fetchData } from "@/lib/api";
-export const CACHE_TTL = 3600000; // 1 hour in milliseconds
-export const SITEMAP_NAMESPACE = "http://www.sitemaps.org/schemas/sitemap/0.9";
-export const IMAGE_NAMESPACE = "http://www.google.com/schemas/sitemap-image/1.1";
-export const DEFAULT_BASE_URL = "https://thesalesmens.com";
+const CACHE_TTL = 3600000; // 1 hour in milliseconds
+const SITEMAP_NAMESPACE = "http://www.sitemaps.org/schemas/sitemap/0.9";
+const IMAGE_NAMESPACE = "http://www.google.com/schemas/sitemap-image/1.1";
+const DEFAULT_BASE_URL = "https://thesalesmens.com";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || DEFAULT_BASE_URL;
 
 interface Image {
