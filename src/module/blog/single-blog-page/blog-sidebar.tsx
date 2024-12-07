@@ -9,12 +9,11 @@ const Blogsidebar = async ({ apidata }: BlogsSidebarProps) => {
 
     const response = await fetch(`${apiUrl}/v2/post/store?rowsPerPage=4&page=1&categorie=67455565a8c44e237984700b`);
     const { data }: any = await response.json();
-
     return (
 
         <aside className="space-y-6" >
-            <RelatiedPost data={data?.result} path={"blog"} page_title={"Related post"} />
-            <RecentlyViewed apidata={apidata} path={"blog"} page_title={"Recently Viewed"} />
+            <RelatiedPost data={data?.result} page_title={"Related post"} />
+            <RecentlyViewed apidata={apidata} path='blog' page_title={"Recently Viewed"} />
         </aside >
     )
 }

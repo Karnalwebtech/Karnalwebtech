@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Phone, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function ContsctUs() {
     const fadeIn = {
@@ -13,10 +14,10 @@ export default function ContsctUs() {
     }
 
     const socialLinks = [
-        { icon: Facebook, href: '#', label: 'Facebook' },
-        { icon: Instagram, href: '#', label: 'Instagram' },
-        { icon: Linkedin, href: '#', label: 'LinkedIn' },
-        { icon: Twitter, href: '#', label: 'Twitter' }
+        // { icon: Facebook, href: '#', label: 'Facebook' },
+        { icon: Instagram, href: 'https://www.instagram.com/karnalwebtech', label: 'Instagram' },
+        { icon: Linkedin, href: 'https://www.linkedin.com/in/karnalwebtech', label: 'LinkedIn' },
+        // { icon: Twitter, href: '#', label: 'Twitter' }
     ]
 
     return (
@@ -49,15 +50,15 @@ export default function ContsctUs() {
                         <div className="space-y-4">
                             <div className="flex items-center space-x-3 text-muted-foreground text-sm">
                                 <Mail className="h-5 w-5 text-black" />
-                                <span>info@yourdomain.com</span>
+                                <span>info@karnalwebtech.com</span>
                             </div>
                             <div className="flex items-center space-x-3 text-muted-foreground text-sm">
                                 <MapPin className="h-5 w-5 text-black" />
-                                <span>JI.KH Samanhudi Metro Atom Plaza Bl AK5 (Tl, DKI Jakarta</span>
+                                <span>Sector-6, Karnal, Haryana 132001, India</span>
                             </div>
                             <div className="flex items-center space-x-3 text-muted-foreground text-sm">
                                 <Phone className="h-5 w-5 text-black" />
-                                <span>+62 (0) 000 0000 00</span>
+                                <span><Link href={"tel:+918816041566"}>+91 88160 41566</Link></span>
                             </div>
                         </div>
                     </motion.div>
@@ -113,6 +114,7 @@ export default function ContsctUs() {
                             key={social.label}
                             href={social.href}
                             variants={fadeIn}
+                            target="__blank"
                             whileHover={{ scale: 1.1 }}
                             className="rounded-full bg-black p-3 text-gray-300 transition-colors hover:bg-white/10 hover:text-black"
                             aria-label={social.label}

@@ -2,8 +2,9 @@ import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
 import Link from 'next/link'
+import { TimeAgo } from '@/lib/service/time/timeAgo'
 
-export const RelatiedPost = ({ data, path, page_title }: { data: any, path: string, page_title: string }) => {
+export const RelatiedPost = ({ data,  page_title }: { data: any,  page_title: string }) => {
     return (
         <Card>
             <CardHeader>
@@ -22,10 +23,10 @@ export const RelatiedPost = ({ data, path, page_title }: { data: any, path: stri
                             style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}
                         />
                         <div>
-                            <Link href={`/${path}/${item?.slug}`}>
-                                <h3 className="text-sm font-medium">{item?.title}</h3>
+                            <Link href={`/${item?.categorie[0]?.slug}/${item?.slug}`}>
+                                <h3 className="text-sm font-medium line-clamp-2">{item?.title}</h3>
                             </Link>
-                            <p className="text-xs text-muted-foreground">2 hours ago</p>
+                            <p className="text-xs text-muted-foreground"><TimeAgo time={item.updatedAt}/></p>
                         </div>
                     </div>
                 ))}

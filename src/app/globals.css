@@ -4,35 +4,47 @@
 
 /* styles/globals.css or styles/fonts.css */
 @font-face {
-  font-family: 'MontserratAlternates';
-  src: url('/font/MontserratAlternates/MontserratAlternates-Medium.ttf') format('truetype');
+  font-family: "MontserratAlternates";
+  src: url("/font/MontserratAlternates/MontserratAlternates-Medium.ttf")
+    format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 /* Optional: You can also define other styles or weights if needed */
 @font-face {
-  font-family: 'MontserratAlternates';
-  src: url('/font/MontserratAlternates/MontserratAlternates-Medium.ttf') format('truetype');
+  font-family: "MontserratAlternates";
+  src: url("/font/MontserratAlternates/MontserratAlternates-Medium.ttf")
+    format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto Flex';
-  src: url('/font/Roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf') format('truetype');
+  font-family: "Roboto Flex";
+  src: url("/font/Roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf")
+    format("truetype");
   font-weight: 100 900; /* Range of available font weights */
   font-style: normal;
 }
-h1,h2,h3,h4 {
-  font-family: 'MontserratAlternates', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "MontserratAlternates", sans-serif;
 }
-body,p {
-  font-family: 'Roboto Flex', sans-serif;
+body,
+p {
+  font-family: "Roboto Flex", sans-serif;
   font-weight: 400; /* Example usage of variable weight */
 }
+:root {
+  --font-montserrat-alternates: var(--font-montserrat-alternates), system-ui, arial, sans-serif;
+}
+
 @layer base {
   :root {
+    --font-montserrat-alternates: var(--font-montserrat-alternates), system-ui, arial, sans-serif;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -94,4 +106,17 @@ body,p {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes backgroundMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.animate-background {
+  animation: backgroundMove 30s linear infinite alternate;
 }

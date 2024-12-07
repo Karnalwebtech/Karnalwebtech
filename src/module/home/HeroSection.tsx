@@ -1,72 +1,62 @@
-"use client";
+'use client'
 
-import React, { useEffect, useRef } from "react";
-import {
-  motion,
-  useAnimation,
-} from "framer-motion";
-import { Button } from "@/components/ui/button";
-import InfintySliderTb from "@/components/common/InfintySliderTb";
-import { useRouter } from "next/navigation";
+import React, { useCallback, useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import InfintySliderTb from "@/components/common/InfintySliderTb"
+
+const ANIMATION_DURATION = 30
+const MAX_WIDTH = 1380
 
 export default function HeroSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const backgroundAnimation = useAnimation();
-  const router = useRouter();
+  const router = useRouter()
+  const [isAnimating, setIsAnimating] = useState(false)
+
   useEffect(() => {
-    backgroundAnimation.start({
-      backgroundPosition: ["0% 0%", "100% 100%"],
-      transition: {
-        repeat: Infinity,
-        repeatType: "reverse",
-        duration: 30,
-        ease: "linear",
-      },
-    });
-  }, [backgroundAnimation]);
+    setIsAnimating(true)
+  }, [])
+
+  const handleDiscoverClick = useCallback(() => {
+    router.push("/projects")
+  }, [router])
 
   return (
-    <motion.div
-      ref={ref}
-      className="relative overflow-hidden"
-      animate={backgroundAnimation}
+    <div
+      className={`relative overflow-hidden bg-cover bg-no-repeat ${isAnimating ? 'animate-background' : ''
+        }`}
       style={{
-        backgroundImage: "url(./assets/background.jpg)",
-        backgroundSize: "cover  ",
-        perspective: 1000,
-        backgroundRepeat: "no-repeat",
+        backgroundImage: "url(/assets/background.jpg)",
+        perspective: "1000px",
       }}
     >
-      <div className="bg-[#00000094]">
-        <div className="min-h-auto py-8 lg:min-h-[650px] block lg:flex items-center max-w-[1380px] m-auto">
-          <div className="w-full lg:w-[40%] text-center lg:text-center lg:text-end relative z-10 p-2">
-            <h1 className="text-3xl md:text-4xl text-white font-bold mb-6">
+      <div className="bg-black/60">
+        <div className="m-auto flex max-w-[1380px] flex-col items-center py-8 lg:min-h-[650px] lg:flex-row">
+          <div className="relative z-10 w-full p-2 text-center lg:w-2/5 lg:text-end">
+            <h1 className="mb-6 text-3xl font-bold text-white md:text-4xl">
               Your Business
               <br />
               Deserves to Shine
             </h1>
-
-            <p className="text-lg md:text-base mb-8 max-w-2xl text-white">
+            <p className="mb-8 max-w-2xl text-base text-white md:text-lg">
               We empower startups and brands by creating innovative, engaging,
               and tailored software solutions that drive success and make an
               impact.
             </p>
-
             <Button
-              onClick={() => router.push("/projects")}
+              onClick={handleDiscoverClick}
               size="lg"
               className="bg-white text-black hover:bg-indigo-100"
             >
               Discover Our Work
             </Button>
           </div>
-          <div className="w-full lg:w-[60%]">
-            <div className="p-4">
-              <InfintySliderTb />
-            </div>
+          <div className="w-full p-4 lg:w-3/5">
+            <InfintySliderTb />
           </div>
         </div>
       </div>
-    </motion.div>
-  );
+    </div>
+  )
 }
+

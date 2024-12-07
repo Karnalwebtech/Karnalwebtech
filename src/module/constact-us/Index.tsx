@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -33,15 +32,6 @@ const formSchema = z.object({
   }),
 })
 
-const mapContainerStyle = {
-  width: '100%',
-  height: '400px'
-}
-
-const center = {
-  lat: 30.7333, // Karnal latitude
-  lng: 76.9833  // Karnal longitude
-}
 
 export default function Index() {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -63,7 +53,7 @@ export default function Index() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <motion.h1 
+      <motion.h1
         className="text-4xl font-bold mb-8 text-center"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -164,23 +154,6 @@ export default function Index() {
           </Card>
         </motion.div>
       </div>
-      <motion.div
-        className="mt-12"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-      >
-        <h2 className="text-2xl font-semibold mb-4">Find Us</h2>
-        <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
-          <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            center={center}
-            zoom={14}
-          >
-            <Marker position={center} />
-          </GoogleMap>
-        </LoadScript>
-      </motion.div>
       {isSubmitted && (
         <motion.div
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"

@@ -12,7 +12,7 @@ interface SidebarProps {
     apidata: any;
 }
 const Sidebar = ({ searchQuery, setSearchQuery, apidata }: SidebarProps) => {
-    const { data, isLoading: CategorieLoading } = useGetAllCategorieQuery({
+    const { data, isLoading } = useGetAllCategorieQuery({
         type: "post",
         rowsPerPage: 100,
         page: 1,
@@ -41,13 +41,13 @@ const Sidebar = ({ searchQuery, setSearchQuery, apidata }: SidebarProps) => {
                     <CardTitle>Categories</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    {CategorieLoading ? <SkeletonLinesCard perPage={7} height={3} /> :
-                        categorieData?.result?.map((item: any,i:number) => (
+                    {isLoading ? <SkeletonLinesCard perPage={9} height={3} /> :
+                        categorieData?.result?.map((item: any, i: number) => (
                             <p key={i}> <Link href={item?.slug}>{item?.title}</Link></p>
                         ))}
                 </CardContent>
             </Card>
-            <RecentlyViewed apidata={apidata} path={"blog"} page_title={"Recently Viewed"} />
+            <RecentlyViewed apidata={apidata} path='blog' page_title={"Recently Viewed"} />
         </aside>
     )
 }

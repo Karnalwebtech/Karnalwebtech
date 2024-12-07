@@ -35,8 +35,9 @@ export default function OurProjects() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4 md:text-4xl lg:text-5xl">
             Our Projects
           </h2>
-          <p className="text-sm text-gray-600 max-w-2xl mx-auto">
-            Explore our portfolio of innovative solutions across various industries and technologies.
+          <p className="text-muted-foreground text-sm max-w-[100%] lg:max-w-[70%] mx-auto">
+            At KarnalWebTech, our projects showcase a perfect blend of innovation, expertise, and commitment. From custom software solutions to cutting-edge mobile and web applications, we deliver projects that drive business success. Each project reflects our dedication to quality, timely delivery, and client satisfaction.
+            Let us turn your vision into reality with tailored solutions that make an impact!
           </p>
         </motion.div>
 
@@ -46,10 +47,10 @@ export default function OurProjects() {
           animate="visible"
           className="grid gap-8 md:grid-cols-3"
         >
-          {isLoading ? [...Array(6)].map((_:any,i:number)=><SkeletonPostCard key={i} />) :
-            apiData?.result?.map((project: any,i:number) => (
+          {isLoading ? [...Array(6)].map((_: any, i: number) => <SkeletonPostCard key={i} />) :
+            apiData?.result?.map((project: any, i: number) => (
               <motion.div
-              key={i}
+                key={i}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -67,7 +68,7 @@ export default function OurProjects() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="text-center mt-12"
         >
-          <Button size="lg" onClick={() => router.push('/projects')} className="bg-black text-primary-foreground hover:text-black hover:bg-primary/90">
+          <Button size="lg" onClick={() => router.push('/projects')} className="bg-black text-primary-foreground hover:text-black hover:bg-gray-100">
             View All Projects
           </Button>
         </motion.div>

@@ -20,7 +20,7 @@ interface BlogPaginationProps {
 
 export default function ShadcnPagination({ data_length, currentPage, totalPages, setCurrentPage }: BlogPaginationProps) {
     // Calculate total pages based on data length and page size
-    const maxVisiblePages = 5
+    const maxVisiblePages = 3
     const totalPages_ = Math.ceil(data_length / totalPages)
 
     const handlePageChange = (page: number) => {
@@ -36,16 +36,16 @@ export default function ShadcnPagination({ data_length, currentPage, totalPages,
         }
 
         // Handle edge cases for current page near the beginning or end
-        if (currentPage <= 3) {
-            return [1, 2, 3, 4, 5]
+        if (currentPage <= 2) {
+            return [1, 2, 3]
         }
 
         if (currentPage >= totalPages_ - 2) {
-            return [totalPages_ - 4, totalPages_ - 3, totalPages_ - 2, totalPages_ - 1, totalPages_]
+            return [totalPages_ - 2, totalPages_ - 1, totalPages_]
         }
 
         // For pages in the middle, show 5 pages centered around the current page
-        return [currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2]
+        return [currentPage - 1, currentPage, currentPage + 1]
     }
 
     return (

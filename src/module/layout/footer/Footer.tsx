@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { Github, Linkedin, Twitter } from "lucide-react"
+import { Instagram, Linkedin } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -38,17 +38,13 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
           <p className="text-sm text-muted-foreground">© 2023 Karnalwebtech. All rights reserved.</p>
           <div className="flex space-x-4">
-            <Link href="https://github.com" className="text-muted-foreground hover:text-foreground transition-colors">
-              <Github className="w-5 h-5" />
-              <span className="sr-only">GitHub</span>
-            </Link>
-            <Link href="https://linkedin.com" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link target="__blank" href="https://www.linkedin.com/in/karnalwebtech" className="text-muted-foreground hover:text-foreground transition-colors">
               <Linkedin className="w-5 h-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            <Link href="https://twitter.com" className="text-muted-foreground hover:text-foreground transition-colors">
-              <Twitter className="w-5 h-5" />
-              <span className="sr-only">Twitter</span>
+            <Link target="__blank" href="https://www.instagram.com/karnalwebtech" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Instagram className="w-5 h-5" />
+              <span className="sr-only">Instagram</span>
             </Link>
           </div>
         </div>

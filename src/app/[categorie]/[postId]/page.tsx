@@ -10,15 +10,26 @@ interface SlugPageProps {
     categorie: string;
   };
 }
-
+interface Keyword {
+  id: number;
+  name: string;
+}
 export async function generateMetadata({
   params: { postId },
 }: SlugPageProps): Promise<Metadata> {
   const { data } = await fetchData(`post/blog/${postId}`);
-
+    
+  // Ensure keywords is an array and extract the 'name' property if it exists
+  const keywordsArray = Array.isArray(data?.seo?.keywords) 
+    ? data.seo.keywords.map((keyword: string | Keyword) => 
+        typeof keyword === 'string' ? keyword : keyword.name
+      )
+    : [];
+    console.log(keywordsArray)
   return {
     title: data?.seo?.title,
     description: data?.seo?.meta_description,
+    keywords: [data?.seo?.keywords].join(', '),
     openGraph: {
       title: data?.seo?.title,
       description: data?.seo?.meta_description,

@@ -1,27 +1,58 @@
+import { JsonLd } from 'react-schemaorg'
+import { WebPage, BreadcrumbList } from 'schema-dts'
 import { fetchData } from "@/lib/api";
 import Index from "@/module/blog/Index";
 import { Metadata } from "next";
 import { memo } from "react";
-
+function generateSchema(data: any) {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: data?.seo?.title,
+      description: data?.seo?.meta_description,
+      url: `https://thesalesmens.com/${data?.slug}`,
+      image: data?.feature_image?.path,
+      inLanguage: "en-US",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "KarnalWebTech",
+        url: "https://thesalesmens.com"
+      },
+      about: {
+        "@type": "Thing",
+        name: data?.title
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          item: {
+            "@id": "https://thesalesmens.com",
+            name: "Home"
+          }
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          item: {
+            "@id": `https://thesalesmens.com/${data?.slug}`,
+            name: data?.title
+          }
+        }
+      ]
+    }
+  ];
+}
 interface SlugPageProps {
   params: {
     categorie: string;
   };
 }
-
-// Corrected function name
-// export async function generateStaticParams() {
-//   const { data } = await fetchData(`categorie`);
-//   const result = data?.result || [];
-
-//   // Ensure result is an array before mapping
-//   if (!Array.isArray(result)) {
-//     throw new Error("Invalid result format");
-//   }
-
-//   // Map over result to extract slugs
-//   return result.map(({ slug }) => ({ categorie: slug })).slice(0, 30); // Include keys for dynamic routes
-// }
 
 export async function generateMetadata({
   params: { categorie },
@@ -68,10 +99,15 @@ const MemoizedBlogPage = memo(Index);
 export default async function Page({ params: { categorie } }: SlugPageProps) {
   try {
     const { data } = await fetchData(`categorie/shop/${categorie}`);
+    const schema: any = generateSchema(data);
     return (
-      <div>
-        <MemoizedBlogPage cat_id={data?._id} />
-      </div>
+      <>
+        <JsonLd<WebPage> item={schema[0]} />
+        <JsonLd<BreadcrumbList> item={schema[1]} />
+        <div>
+          <MemoizedBlogPage cat_id={data?._id} />
+        </div>
+      </>
     );
   } catch (error) {
     // If it's a NEXT_NOT_FOUND error, let it propagate

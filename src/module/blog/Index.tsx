@@ -16,7 +16,7 @@ import { BlogFooter } from '../layout/footer/blog-footer'
 import Sidebar from '../layout/sidebar/blog-sidebar'
 import SkeletonBlogCard from '@/components/skeleton/skelrton-blog-card'
 export default function Index({ cat_id }: { cat_id?: any }) {
-  console.log(cat_id)
+  
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [perPage, setPerPage] = useState<number>(6)
@@ -106,7 +106,7 @@ export default function Index({ cat_id }: { cat_id?: any }) {
       </div>
       <BlogFooter
         currentPage={currentPage}
-        totalPages={apiData?.rowsPerPage}
+        totalPages={apiData?.resultPerPage}
         setCurrentPage={setCurrentPage}
         data_length={apiData?.dataCounter}
         perPage={perPage}

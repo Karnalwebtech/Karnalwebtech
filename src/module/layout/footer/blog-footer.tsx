@@ -17,7 +17,7 @@ export const BlogFooter: React.FC<footerProps> = ({
     setPerPage,
     data_length, }) => {
     return (
-        <div className='flex gap-2 justify-center items-center'>
+        <div className='flex flex-col gap-2 justify-center items-center'>
             <div>
                 {data_length > Number(totalPages) &&
                     <ShadcnPagination
@@ -32,7 +32,7 @@ export const BlogFooter: React.FC<footerProps> = ({
                 <p>Row per page</p>
                 <Select value={perPage} onValueChange={setPerPage}>
                     <SelectTrigger className="w-[100px]">
-                        <SelectValue placeholder="No: rows" />
+                        <SelectValue placeholder="2: 2" />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="2">2</SelectItem>

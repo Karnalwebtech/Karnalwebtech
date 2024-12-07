@@ -1,5 +1,6 @@
 "use client"
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { TimeAgo } from '@/lib/service/time/timeAgo'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -9,6 +10,7 @@ interface Post {
     image: string
     alt: string
     time: string
+    categorie:any;
 }
 interface RecentlyViewedProps {
     apidata: any;
@@ -23,12 +25,15 @@ export const RecentlyViewed = ({ apidata, page_title,path }: RecentlyViewedProps
         const storedPosts = localStorage.getItem('recentlyViewedPosts')
         const parsedPosts: Post[] = storedPosts ? JSON.parse(storedPosts) : []
         setRecentlyViewed(parsedPosts)
+     // Check if apidata is valid
+     if (!apidata?.slug || !apidata?.title || !apidata?.feature_image?.path) return;
 
         // Add current post to recently viewed
         const currentPost = {
             id: apidata?.slug,
             title: apidata?.title,
             image: apidata?.feature_image?.path,
+            categorie: apidata?.categorie[0]?.slug,
             alt: apidata?.feature_image?.altText || 'Karnalwebtech',
             time: apidata?.createdAt,
         }
@@ -60,10 +65,10 @@ export const RecentlyViewed = ({ apidata, page_title,path }: RecentlyViewedProps
                                 style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}
                             />
                             <div>
-                                <Link href={`/${path}/${item.id}`}>
-                                    <h3 className="text-sm font-medium">{item?.title}</h3>
+                                <Link href={`/${item?.categorie}/${item.id}`}>
+                                    <h3 className="text-sm font-medium line-clamp-2">{item?.title}</h3>
                                 </Link>
-                                <p className="text-xs text-muted-foreground">{item?.time}</p>
+                                <p className="text-xs text-muted-foreground"><TimeAgo time={item?.time}/></p>
                             </div>
                         </div>
                     ))}

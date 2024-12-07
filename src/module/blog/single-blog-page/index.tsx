@@ -1,7 +1,4 @@
 import { Breadcrumbdata } from '@/components/common/Breadcrumb'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Facebook, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import Blogsidebar from './blog-sidebar'
