@@ -1,12 +1,20 @@
 "use client"
 import { Input } from '@/components/ui/input'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Search } from 'lucide-react';
 import { useGetFilterAllCategorieQuery } from '@/state/categorieApi';
 import Link from 'next/link';
+
+interface Page {
+    title: string;
+    slug: string;
+}
+
+
 const Search_section = () => {
     const [searchQuery, setSearchQuery] = React.useState("");
     const { data, } = useGetFilterAllCategorieQuery();
+    const [filteredPages, setFilteredPages] = useState<Page[]>([]);
 
     const allpages = [
         {
@@ -42,9 +50,13 @@ const Search_section = () => {
             slug: "terms-conditions"
         }, ...(data || [])
     ]
-    const filteredPages = allpages.filter((page) =>
-        page.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+
+    useEffect(() => {
+        const filtered = allpages.filter((page) =>
+            (page.title || '')?.toLowerCase().includes((searchQuery || '')?.toLowerCase())
+        );
+        setFilteredPages(filtered);
+    }, [searchQuery, data]);
     return (
         <div className='relative'>
             <div
