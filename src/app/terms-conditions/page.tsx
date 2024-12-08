@@ -1,5 +1,5 @@
 import { generateSchema } from "@/lib/service/schemas/generateSchema";
-import { address, contact_number, email } from "@/paths";
+import { address, base_url, contact_number, email } from "@/paths";
 import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Terms & Conditions",
     description:
       "Review Karnal Web Tech's Terms and Conditions for details on using our web design, development, and SEO services. Stay informed about your rights and responsibilities.",
-    url: `/terms-conditions`,
+    url: `${base_url}/terms-conditions`,
     siteName: "Karnal Web Tech",
     images: [
       {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/terms-conditions.webp"],
   },
   alternates: {
-    canonical: `/terms-conditions`,
+    canonical: `${base_url}/terms-conditions`,
   },
 };
 const TermsAndConditions = () => {
