@@ -55,7 +55,7 @@ export async function generateStaticParams(): Promise<
 }
 
 export async function generateMetadata({
-  params: { postId },
+  params: { postId,categorie },
 }: SlugPageProps): Promise<Metadata> {
   const { data } = await fetchData(`post/blog/${postId}`);
 
@@ -73,7 +73,7 @@ export async function generateMetadata({
     openGraph: {
       title: data?.seo?.title,
       description: data?.seo?.meta_description,
-      url: "https://thesalesmens.com",
+      url: `/${categorie}/${postId}`,
       siteName: "KarnalWebTech",
       images: [
         {
@@ -95,27 +95,27 @@ export async function generateMetadata({
     },
     robots: "index, follow",
     alternates: {
-      canonical: "https://thesalesmens.com",
+      canonical: `/${categorie}/${postId}`,
     },
   };
 }
 
 const MemoizedBlogPage = memo(BlogPage);
 
-function generateSchema(data: any) {
+function generateSchema(data: any,categorie:string,postId:string) {
   return [
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
       name: data?.seo?.title,
       description: data?.seo?.meta_description,
-      url: `https://thesalesmens.com/${data?.slug}`,
+      url: `/${data?.slug}`,
       image: data?.feature_image?.path,
       inLanguage: "en-US",
       isPartOf: {
         "@type": "WebSite",
         name: "KarnalWebTech",
-        url: "https://thesalesmens.com",
+        url: `/${categorie}/${postId}`,
       },
       about: {
         "@type": "Thing",
@@ -130,7 +130,7 @@ function generateSchema(data: any) {
           "@type": "ListItem",
           position: 1,
           item: {
-            "@id": "https://thesalesmens.com",
+            "@id": "/",
             name: "Home",
           },
         },
@@ -138,7 +138,7 @@ function generateSchema(data: any) {
           "@type": "ListItem",
           position: 2,
           item: {
-            "@id": `https://thesalesmens.com/${data?.slug}`,
+            "@id": `/${data?.slug}`,
             name: data?.title,
           },
         },
@@ -159,7 +159,7 @@ export default async function Blog({
     }
 
     // Generate structured schema data
-    const schema: any = generateSchema(data);
+    const schema: any = generateSchema(data,categorie,postId);
 
     return (
       <>

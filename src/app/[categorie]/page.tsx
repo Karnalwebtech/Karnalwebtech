@@ -100,7 +100,7 @@ export async function generateMetadata({
       openGraph: {
         title: data?.seo?.title,
         description: data?.seo?.meta_description,
-        url: `https://thesalesmens.com/${categorie}`,
+        url: `/${categorie}`,
         siteName: "KarnalWebTech",
         images: [
           {
@@ -122,7 +122,7 @@ export async function generateMetadata({
       },
       robots: "index, follow",
       alternates: {
-        canonical: `https://thesalesmens.com/${categorie}`,
+        canonical: `/${categorie}`,
       },
     };
   } catch (error) {
