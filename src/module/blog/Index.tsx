@@ -80,7 +80,7 @@ export default function Index({ cat_id }: { cat_id?: any }) {
                   <CardFooter className="flex justify-between items-center">
                     <div className="flex items-center space-x-4">
                       <Avatar>
-                        <AvatarImage src={`/upload/avarat.png?height=40&width=40`} alt={post.author} />
+                        <AvatarImage src={`/upload/avarat.png?height=40&width=40`} alt={"karnal web tech"} />
                         <AvatarFallback>{post.audit_log?.name.split(' ').map((n: any) => n[0]).join('')}</AvatarFallback>
                       </Avatar>
                       <div>
