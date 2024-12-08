@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { OptimizedImage } from "../OptimizedImage";
 
 const brands = [
     {
@@ -53,13 +54,11 @@ export default function InfintySliderLR() {
                                 key={`brand-${index}`}
                                 className="flex-shrink-0 w-[200px] h-[120px] bg-[#1a1a1a] rounded-lg flex items-center justify-center p-6 hover:bg-[#252525] transition-colors"
                             >
-                                <Image
+                                <OptimizedImage
                                     src={brand.logo}
                                     alt={brand.name}
                                     width={100}
                                     height={100}
-                                    objectFit="cover" // Ensures the image covers the container
-                                    priority
                                     className="w-full h-full object-contain invert"
                                 />
                             </div>

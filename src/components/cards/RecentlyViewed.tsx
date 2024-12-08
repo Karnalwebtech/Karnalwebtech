@@ -4,6 +4,7 @@ import { TimeAgo } from '@/lib/service/time/timeAgo'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { OptimizedImage } from '../OptimizedImage'
 interface Post {
     id: string
     title: string
@@ -55,14 +56,12 @@ export const RecentlyViewed = ({ apidata, page_title,path }: RecentlyViewedProps
                 <CardContent className="space-y-4">
                     {recentlyViewed?.map((item: Post,) => (
                         <div key={item.id} className="flex gap-2">
-                            <Image
+                            <OptimizedImage
                                 src={item?.image}
                                 alt={item?.alt || "karnalwebtech"}
                                 width={60}
                                 height={60}
-                                priority
                                 className="rounded-lg object-cover bg-cover"
-                                style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}
                             />
                             <div>
                                 <Link href={`/${item?.categorie}/${item.id}`}>

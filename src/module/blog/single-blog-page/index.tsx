@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import Blogsidebar from './blog-sidebar'
 import Blogfooter from './blog-footer'
+import { OptimizedImage } from '@/components/OptimizedImage'
 interface BlogPageProps {
     apidata: any;
 }
@@ -22,14 +23,12 @@ const BlogPage: React.FC<BlogPageProps> = ({ apidata }) => {
                     <h1 className="text-3xl font-bold tracking-tight">
                         {apidata?.title}
                     </h1>
-                    <Image
+                    <OptimizedImage
                         src={`${apidata?.feature_image?.path}`}
                         alt={`${apidata?.altText || "karnal web tech"}`}
                         width={800}
                         height={300} // Updated height to 300
-                        priority
                         className="rounded-lg object-cover bg-cover h-[350px]"
-                        style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}
                     />
                     <div className="prose max-w-none dark:prose-invert">
                         <div

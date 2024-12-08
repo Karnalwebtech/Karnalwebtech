@@ -40,8 +40,7 @@ export default function InfintySliderTb() {
                     <Card className="h-full w-full border-0">
                         <CardContent className={cn(
                             "flex h-full items-center justify-center",
-                            "text-4xl font-bold"
-                        )}>
+                            "text-4xl font-bold")}>
                             <Image
                                 src={images[currentIndex]}
                                 alt={`Slide ${currentIndex + 1}`}

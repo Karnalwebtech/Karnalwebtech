@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
 import Link from 'next/link'
 import { TimeAgo } from '@/lib/service/time/timeAgo'
+import { OptimizedImage } from '../OptimizedImage'
 
 export const RelatiedPost = ({ data,  page_title }: { data: any,  page_title: string }) => {
     return (
@@ -13,15 +14,13 @@ export const RelatiedPost = ({ data,  page_title }: { data: any,  page_title: st
             <CardContent className="space-y-4">
                 {data?.map((item: any,) => (
                     <div key={item._id} className="flex gap-2">
-                        <Image
+                        <OptimizedImage
                             src={item?.feature_image?.path}
                             alt={item?.feature_image?.altText || "karnalwebtech"}
                             width={60}
                             height={60}
-                            priority
                             className="rounded-lg object-cover bg-cover"
-                            style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}
-                        />
+                            />
                         <div>
                             <Link href={`/${item?.categorie[0]?.slug}/${item?.slug}`}>
                                 <h3 className="text-sm font-medium line-clamp-2">{item?.title}</h3>

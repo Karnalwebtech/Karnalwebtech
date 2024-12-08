@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import Image from 'next/image'
+import { OptimizedImage } from '../OptimizedImage'
 
 const StackCard = ({ item }: { item: any }) => {
     return (
@@ -8,11 +9,11 @@ const StackCard = ({ item }: { item: any }) => {
             <CardContent className="p-6">
                 <div className="mb-2 flex items-start gap-[4px]">
                     <div className="h-[40px] max-w-[100px] w-[40px] relative">
-                        <Image
+                        <OptimizedImage
                             src={`/assets/${item.icon}`}
                             alt="Businessman with checklist"
-                            fill
-                            priority
+                            width={100}
+                            height={100}
                             className="object-contain"
                         />
                     </div>

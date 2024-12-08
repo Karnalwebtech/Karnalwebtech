@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
+import { OptimizedImage } from '../OptimizedImage'
 
 const BlogCard = ({ data }: { data: any }) => {
     const containerVariants = {
@@ -40,7 +41,7 @@ const BlogCard = ({ data }: { data: any }) => {
                             transition={{ duration: 0.3 }}
                         >
                             <Link href={`/blog/${project?.slug}`}>
-                                <Image
+                                <OptimizedImage
                                     src={project?.feature_image?.path}
                                     alt={project?.feature_image?.altText || project?.title}
                                     width={600}

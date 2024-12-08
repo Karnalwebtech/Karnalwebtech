@@ -7,6 +7,7 @@ import ChooseUs from './ChooseUs'
 import OurProjects from './OurProjects'
 import OurBlog from './OurBlog'
 import ContsctUs from './ContsctUs'
+import { OptimizedImage } from '@/components/OptimizedImage'
 
 export default function Home() {
   return (
@@ -23,13 +24,12 @@ export default function Home() {
             <FAQAccordion />
           </div>
           <div className="w-full lg:w-1/2">
-            <Image
+            <OptimizedImage
               src="/upload/16607.jpg"
               alt="FAQ illustration"
               width={600}
               height={600}
               className="rounded-lg"
-              priority
             />
           </div>
         </div>

@@ -15,6 +15,7 @@ import useFilteredAndSorted from '@/hook/useFilteredAndSorted'
 import { BlogFooter } from '../layout/footer/blog-footer'
 import Sidebar from '../layout/sidebar/blog-sidebar'
 import SkeletonBlogCard from '@/components/skeleton/skelrton-blog-card'
+import { OptimizedImage } from '@/components/OptimizedImage'
 export default function Index({ cat_id }: { cat_id?: any }) {
   
   const router = useRouter();
@@ -63,10 +64,9 @@ export default function Index({ cat_id }: { cat_id?: any }) {
                       transition={{ duration: 0.3 }}
                     >
                       <Link href={`/${post?.categorie[0]?.slug}/${post?.slug}`}>
-                        <Image
+                        <OptimizedImage
                           src={post?.feature_image?.path}
                           alt={post?.feature_image?.altText || post?.title}
-                          priority
                           width={600}
                           height={400}
                           className="w-full h-48 object-cover"

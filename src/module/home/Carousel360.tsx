@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import { OptimizedImage } from '@/components/OptimizedImage'
 
 export default function Carousel360() {
     const [index, setIndex] = useState(0)
@@ -65,10 +66,11 @@ export default function Carousel360() {
                                 transform: `rotateY(${i * 72}deg) translateZ(300px)`
                             }}
                         >
-                            <Image
+                            <OptimizedImage
                                 src={image}
                                 alt={`carousel-${i}`}
-                                fill
+                                width={100}
+                                height={100}
                                 className="w-full h-auto object-cover"
                             />
                         </motion.div>
