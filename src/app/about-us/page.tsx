@@ -1,5 +1,6 @@
 import { generateSchema } from "@/lib/service/schemas/generateSchema";
 import Index from "@/module/about-us/Index";
+import { base_url } from "@/paths";
 import { Metadata } from "next";
 import { JsonLd } from "react-schemaorg";
 import { WebPage, BreadcrumbList } from "schema-dts";
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     title: "About Us - Karnal Web Tech: Empowering Digital Success",
     description:
       "Karnal Web Tech delivers expert web design, development, SEO, and digital marketing solutions to help businesses grow and thrive online.",
-    url: `/about-us`,
+    url: `${base_url}/about-us`,
     siteName: "Karnal Web Tech",
     images: [
       {
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     images: ["/assets/about-us.webp"],
   },
   alternates: {
-    canonical: `/about-us`,
+    canonical: `${base_url}/about-us`,
   },
 };
 
