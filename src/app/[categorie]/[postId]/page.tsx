@@ -1,10 +1,11 @@
 import { fetchData } from "@/lib/api";
+import { readCache, writeCache } from "@/lib/service/cache";
 import BlogPage from "@/module/blog/single-blog-page";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React, { memo } from "react";
-import { JsonLd } from 'react-schemaorg';
-import { WebPage, BreadcrumbList } from 'schema-dts';
+import { JsonLd } from "react-schemaorg";
+import { WebPage, BreadcrumbList } from "schema-dts";
 
 interface SlugPageProps {
   params: {
@@ -23,36 +24,52 @@ interface PostUrl {
   categorie: [{ slug: string }];
 }
 
-export async function generateStaticParams(): Promise<SlugPageProps['params'][]> {
-  const data = await fetchData(`post/post-urls`);
-  const result = data || [];
-  
-  // Ensure result is an array before mapping
-  if (!Array.isArray(result)) {
-    throw new Error("Invalid result format");
-  }
+export async function generateStaticParams(): Promise<
+  SlugPageProps["params"][]
+> {
+  const cacheKey = "post-urls";
+  const cachedData = readCache<SlugPageProps["params"][]>(cacheKey);
 
-  // Map over result to extract slugs
-  return result.slice(0, 30).map(({ slug, categorie }: PostUrl) => ({
-    categorie: categorie?.[0]?.slug, // Assuming the API returns a category
-    postId: slug,
-  }));
+  if (cachedData) {
+    console.log("Using cached static params");
+    return cachedData;
+  }
+  try {
+    const data = await fetchData(`post/post-urls`);
+    const result = data || [];
+    // Ensure result is an array before mapping
+    if (!Array.isArray(result)) {
+      throw new Error("Invalid result format");
+    }
+    // Map over result to extract slugs
+    const params= result.slice(0, 30).map(({ slug, categorie }: PostUrl) => ({
+      categorie: categorie?.[0]?.slug, // Assuming the API returns a category
+      postId: slug,
+    }));
+    writeCache(cacheKey, params);
+    return params
+  } catch (error) {
+    console.error("Error generating static params:", error);
+    return [];
+  }
 }
 
-export async function generateMetadata({ params: { postId } }: SlugPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params: { postId },
+}: SlugPageProps): Promise<Metadata> {
   const { data } = await fetchData(`post/blog/${postId}`);
 
   // Ensure keywords is an array and extract the 'name' property if it exists
   const keywordsArray = Array.isArray(data?.seo?.keywords)
     ? data.seo.keywords.map((keyword: string | Keyword) =>
-        typeof keyword === 'string' ? keyword : keyword.name
+        typeof keyword === "string" ? keyword : keyword.name
       )
     : [];
-  
+
   return {
     title: data?.seo?.title,
     description: data?.seo?.meta_description,
-    keywords: keywordsArray.join(', '),
+    keywords: keywordsArray.join(", "),
     openGraph: {
       title: data?.seo?.title,
       description: data?.seo?.meta_description,
@@ -135,19 +152,19 @@ export default async function Blog({
 }: SlugPageProps) {
   try {
     const { data } = await fetchData(`post/blog/${postId}`);
-    
+
     // Ensure the category matches, else show 404
     if (categorie.toLowerCase() !== data.categorie[0].slug.toLowerCase()) {
       notFound(); // Trigger 404 if category doesn't match
     }
 
     // Generate structured schema data
-    const schema:any = generateSchema(data);
+    const schema: any = generateSchema(data);
 
     return (
       <>
-         {schema[0] && <JsonLd<WebPage> item={schema[0]} />}
-         {schema[1] && <JsonLd<BreadcrumbList> item={schema[1]} />}
+        {schema[0] && <JsonLd<WebPage> item={schema[0]} />}
+        {schema[1] && <JsonLd<BreadcrumbList> item={schema[1]} />}
         <div>
           <MemoizedBlogPage apidata={data} />
         </div>

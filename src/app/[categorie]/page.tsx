@@ -4,6 +4,7 @@ import { fetchData } from "@/lib/api";
 import Index from "@/module/blog/Index";
 import { Metadata } from "next";
 import { memo } from "react";
+import { readCache, writeCache } from "@/lib/service/cache";
 
 // Schema generation function
 function generateSchema(data: any) {
@@ -61,15 +62,27 @@ interface SlugPageProps {
   };
 }
 
-// Fetch static params for dynamic routes
-export async function generateStaticParams(): Promise<SlugPageProps["params"][]> {
+export async function generateStaticParams(): Promise<
+  SlugPageProps["params"][]
+> {
+  const cacheKey = "categorie-urls";
+  const cachedData = readCache<SlugPageProps["params"][]>(cacheKey);
+
+  if (cachedData) {
+    console.log("Using cached static params");
+    return cachedData;
+  }
+
   try {
     const data = await fetchData("categorie/categorie-urls");
     if (!Array.isArray(data)) throw new Error("Invalid data format");
 
-    return data.slice(0, 30).map(({ slug }: { slug: string }) => ({
+    const params = data.slice(0, 30).map(({ slug }: { slug: string }) => ({
       categorie: slug,
     }));
+
+    writeCache(cacheKey, params);
+    return params;
   } catch (error) {
     console.error("Error generating static params:", error);
     return [];
