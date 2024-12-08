@@ -15,7 +15,7 @@ export default function InfintySliderTb() {
         "/assets/karnalwebtech seo (2).webp",
         "/assets/karnalwebtech seo.webp",
         "/assets/karnalwebtech website desgine.webp",
-        "/assets/karnalwebtech website.webp",
+        "/assets/background.webp",
     ];
     React.useEffect(() => {
         const timer = setInterval(() => {

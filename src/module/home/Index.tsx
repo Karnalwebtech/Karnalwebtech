@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import FAQAccordion from '@/components/common/FAQAccordion'
 import HeroSection from './HeroSection'
 import ServiceSection from './ServiceSecton'

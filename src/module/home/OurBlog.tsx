@@ -1,5 +1,4 @@
 'use client'
-
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -22,9 +21,6 @@ export default function OurBlog() {
       }
     }
   }
-
-
-
   const { data, error, isLoading } = useGetAllPostQuery({
     rowsPerPage: 6,
     page: 1,

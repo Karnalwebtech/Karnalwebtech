@@ -1,29 +1,23 @@
 'use client'
-
 import { motion } from 'framer-motion'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Phone, ArrowRight } from 'lucide-react'
+import { Instagram, Linkedin, Mail, MapPin, Phone, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-
 export default function ContsctUs() {
     const fadeIn = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 }
     }
-
     const socialLinks = [
         // { icon: Facebook, href: '#', label: 'Facebook' },
         { icon: Instagram, href: 'https://www.instagram.com/karnalwebtech', label: 'Instagram' },
         { icon: Linkedin, href: 'https://www.linkedin.com/in/karnalwebtech', label: 'LinkedIn' },
         // { icon: Twitter, href: '#', label: 'Twitter' }
     ]
-
     return (
         <section className="relative overflow-hidden">
-
-
             <div className="container relative mx-auto px-4 py-16 md:py-24">
                 <div className="grid gap-12 lg:grid-cols-2">
                     {/* Left Column */}
@@ -46,7 +40,6 @@ export default function ContsctUs() {
                                 I would like to meet with you to discuss something and opportunities for collaboration.
                             </p>
                         </div>
-
                         <div className="space-y-4">
                             <div className="flex items-center space-x-3 text-muted-foreground text-sm">
                                 <Mail className="h-5 w-5 text-black" />

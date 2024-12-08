@@ -1,22 +1,14 @@
 'use client'
-
 import React, { useCallback, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import InfintySliderTb from "@/components/common/InfintySliderTb"
-
-const ANIMATION_DURATION = 30
-const MAX_WIDTH = 1380
-
 export default function HeroSection() {
   const router = useRouter()
   const [isAnimating, setIsAnimating] = useState(false)
-
   useEffect(() => {
     setIsAnimating(true)
   }, [])
-
   const handleDiscoverClick = useCallback(() => {
     router.push("/projects")
   }, [router])
@@ -26,7 +18,7 @@ export default function HeroSection() {
       className={`relative overflow-hidden bg-cover bg-no-repeat ${isAnimating ? 'animate-background' : ''
         }`}
       style={{
-        backgroundImage: "url(/assets/background.jpg)",
+        backgroundImage: "url(/assets/background.webp)",
         perspective: "1000px",
       }}
     >
