@@ -1,6 +1,7 @@
 import { fetchData } from "@/lib/api";
 import { readCache, writeCache } from "@/lib/service/cache";
 import BlogPage from "@/module/blog/single-blog-page";
+import { base_url } from "@/paths";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React, { memo } from "react";
@@ -73,7 +74,7 @@ export async function generateMetadata({
     openGraph: {
       title: data?.seo?.title,
       description: data?.seo?.meta_description,
-      url: `/${categorie}/${postId}`,
+      url: `${base_url}/${categorie}/${postId}`,
       siteName: "KarnalWebTech",
       images: [
         {
@@ -95,7 +96,7 @@ export async function generateMetadata({
     },
     robots: "index, follow",
     alternates: {
-      canonical: `/${categorie}/${postId}`,
+      canonical: `${base_url}/${categorie}/${postId}`,
     },
   };
 }
@@ -109,13 +110,13 @@ function generateSchema(data: any,categorie:string,postId:string) {
       "@type": "WebPage",
       name: data?.seo?.title,
       description: data?.seo?.meta_description,
-      url: `/${data?.slug}`,
+      url: `${base_url}/${data?.slug}`,
       image: data?.feature_image?.path,
       inLanguage: "en-US",
       isPartOf: {
         "@type": "WebSite",
         name: "KarnalWebTech",
-        url: `/${categorie}/${postId}`,
+        url: `${base_url}/${categorie}/${postId}`,
       },
       about: {
         "@type": "Thing",
@@ -130,7 +131,7 @@ function generateSchema(data: any,categorie:string,postId:string) {
           "@type": "ListItem",
           position: 1,
           item: {
-            "@id": "/",
+            "@id":base_url,
             name: "Home",
           },
         },
@@ -138,7 +139,7 @@ function generateSchema(data: any,categorie:string,postId:string) {
           "@type": "ListItem",
           position: 2,
           item: {
-            "@id": `/${data?.slug}`,
+            "@id": `${base_url}/${data?.slug}`,
             name: data?.title,
           },
         },

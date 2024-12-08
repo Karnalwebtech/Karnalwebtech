@@ -5,6 +5,7 @@ import Index from "@/module/blog/Index";
 import { Metadata } from "next";
 import { memo } from "react";
 import { readCache, writeCache } from "@/lib/service/cache";
+import { base_url } from "@/paths";
 
 // Schema generation function
 function generateSchema(data: any) {
@@ -100,7 +101,7 @@ export async function generateMetadata({
       openGraph: {
         title: data?.seo?.title,
         description: data?.seo?.meta_description,
-        url: `/${categorie}`,
+        url: `${base_url}/${categorie}`,
         siteName: "KarnalWebTech",
         images: [
           {
@@ -122,7 +123,7 @@ export async function generateMetadata({
       },
       robots: "index, follow",
       alternates: {
-        canonical: `/${categorie}`,
+        canonical: `${base_url}/${categorie}`,
       },
     };
   } catch (error) {
