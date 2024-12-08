@@ -9,9 +9,7 @@ import { readCache, writeCache } from "@/lib/service/cache";
 // Schema generation function
 function generateSchema(data: any) {
   if (!data) return [];
-
-  const baseUrl = "https://thesalesmens.com";
-
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   return [
     {
       "@context": "https://schema.org",
@@ -77,7 +75,7 @@ export async function generateStaticParams(): Promise<
     const data = await fetchData("categorie/categorie-urls");
     if (!Array.isArray(data)) throw new Error("Invalid data format");
 
-    const params = data.slice(0, 30).map(({ slug }: { slug: string }) => ({
+    const params = data.slice(0, 50).map(({ slug }: { slug: string }) => ({
       categorie: slug,
     }));
 

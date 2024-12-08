@@ -42,7 +42,7 @@ export async function generateStaticParams(): Promise<
       throw new Error("Invalid result format");
     }
     // Map over result to extract slugs
-    const params= result.slice(0, 30).map(({ slug, categorie }: PostUrl) => ({
+    const params= result.slice(0, 50).map(({ slug, categorie }: PostUrl) => ({
       categorie: categorie?.[0]?.slug, // Assuming the API returns a category
       postId: slug,
     }));

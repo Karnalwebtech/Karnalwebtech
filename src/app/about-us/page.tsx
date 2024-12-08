@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us - Karnal Web Tech: Empowering Digital Success",
     description:
-      "Discover Karnal Web Tech's mission to provide cutting-edge web solutions, digital marketing, and SEO services. We are dedicated to driving online success for businesses in Haryana and beyond.",
+      "Karnal Web Tech delivers expert web design, development, SEO, and digital marketing solutions to help businesses grow and thrive online.",
     url: `/about-us`,
     siteName: "Karnal Web Tech",
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     creator: "@KarnalWebTech",
     title: "About Us - Karnal Web Tech: Empowering Digital Success",
     description:
-      "Learn more about Karnal Web Tech, the leading provider of web design, development, and digital marketing services in Haryana. Partner with us for your digital growth.",
+      "Karnal Web Tech delivers expert web design, development, SEO, and digital marketing solutions to help businesses grow and thrive online.",
     images: ["/assets/about-us.webp"],
   },
   alternates: {
@@ -57,7 +57,7 @@ export default function AboutUs() {
   const schema: any = generateSchema({
     title: "About Us - Karnal Web Tech: Empowering Digital Success",
     description:
-      "Discover Karnal Web Tech's mission to provide cutting-edge web solutions, digital marketing, and SEO services. We are dedicated to driving online success for businesses in Haryana and beyond.",
+      "Karnal Web Tech delivers expert web design, development, SEO, and digital marketing solutions to help businesses grow and thrive online.",
     slug: "about-us",
     path: "/assets/about-us.webp",
   });
