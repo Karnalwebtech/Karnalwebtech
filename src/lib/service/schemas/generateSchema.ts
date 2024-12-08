@@ -1,4 +1,5 @@
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://thesalesmens.com";
+import { base_url } from "@/paths";
+
 export function generateSchema(data: any) {
   if (!data) return [];
   return [
@@ -7,13 +8,13 @@ export function generateSchema(data: any) {
       "@type": "WebPage",
       name: data?.title,
       description: data?.description,
-      url: `${baseUrl}/${data.slug}`,
+      url: `${base_url}/${data.slug}`,
       image: data.path,
       inLanguage: "en-US",
       isPartOf: {
         "@type": "WebSite",
         name: "KarnalWebTech",
-        url: baseUrl,
+        url: base_url,
       },
       about: {
         "@type": "Thing",
@@ -28,7 +29,7 @@ export function generateSchema(data: any) {
           "@type": "ListItem",
           position: 1,
           item: {
-            "@id": baseUrl,
+            "@id": base_url,
             name: "Home",
           },
         },
@@ -36,7 +37,7 @@ export function generateSchema(data: any) {
           "@type": "ListItem",
           position: 2,
           item: {
-            "@id": `${baseUrl}/${data.slug}`,
+            "@id": `${base_url}/${data.slug}`,
             name: data.title,
           },
         },

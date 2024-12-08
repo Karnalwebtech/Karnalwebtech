@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { generateSchema } from "@/lib/service/schemas/generateSchema";
+import { base_url } from "@/paths";
 
 export const metadata: Metadata = {
   title:
@@ -21,11 +22,11 @@ export const metadata: Metadata = {
       "Frequently Asked Questions (FAQs) – Find Answers to Your Queries",
     description:
       "Find quick answers to common questions about our products, services, and policies in our FAQ section.",
-    url: `/faq`,
+    url: `${base_url}/faq`,
     siteName: "Karnal Web Tech",
     images: [
       {
-        url: "/assets/faq.webp",
+        url: `${base_url}/assets/faq.webp`,
         width: 1200,
         height: 630,
         alt: "Karnal Web tech faq",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     images: ["/assets/faq.webp"],
   },
   alternates: {
-    canonical: `/faq`,
+    canonical: `${base_url}/faq`,
   },
 };
 
@@ -56,7 +57,7 @@ export default function FAQPage() {
     description:
       "Find quick answers to common questions about our products, services, and policies in our FAQ section.",
     slug: "faq",
-    path: "/assets/faq.webp",
+    path: `${base_url}/assets/faq.webp`,
   });
   const faqs = [
     {
