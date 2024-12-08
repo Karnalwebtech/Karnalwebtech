@@ -1,5 +1,6 @@
 import { generateSchema } from "@/lib/service/schemas/generateSchema";
 import Index from "@/module/blog/Index";
+import { base_url } from "@/paths";
 import { Metadata } from "next";
 import React from "react";
 import { JsonLd } from "react-schemaorg";
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
       "Karnal Web Tech Blog: Insights on Web Design, Development, and Digital Trends",
     description:
       "Discover expert tips and trends in web development, SEO, and digital marketing. Karnal Web Tech's blog is your go-to resource for staying ahead in the digital landscape.",
-    url: `/blog`,
+    url: `${base_url}/blog`,
     siteName: "Karnal Web Tech",
     images: [
       {
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog.webp"],
   },
   alternates: {
-    canonical: `/blog`,
+    canonical: `${base_url}/blog`,
   },
 };
 export default function Blog() {

@@ -1,5 +1,6 @@
 import { generateSchema } from "@/lib/service/schemas/generateSchema";
 import Index from "@/module/privacy-policy/Index";
+import { base_url } from "@/paths";
 import { Metadata } from "next";
 import { JsonLd } from "react-schemaorg";
 import { WebPage, BreadcrumbList } from "schema-dts";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy",
     description:
       "Read Karnal Web Tech's Privacy Policy to understand how we collect, use, and protect your personal information. Your privacy is our priority.",
-    url: `/privacy-policy`,
+    url: `${base_url}/privacy-policy`,
     siteName: "Karnal Web Tech",
     images: [
       {
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     images: ["/assets/privacy-policy.webp"],
   },
   alternates: {
-    canonical: `/privacy-policy`,
+    canonical: `${base_url}/privacy-policy`,
   },
 };
 export default function PrivacyPolicy() {

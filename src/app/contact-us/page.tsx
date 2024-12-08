@@ -1,5 +1,6 @@
 import { generateSchema } from "@/lib/service/schemas/generateSchema";
 import Index from "@/module/constact-us/Index";
+import { base_url } from "@/paths";
 import { Metadata } from "next";
 import { JsonLd } from "react-schemaorg";
 import { WebPage, BreadcrumbList } from "schema-dts";
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
       "Contact Us - Karnal Web Tech: Your Partner in Web Design, Development, and SEO Solutions.",
     description:
       "Contact Karnal Web Tech for expert web design, development, and SEO services. Let’s discuss how we can help you grow your online presence.",
-    url: `/contact-us`,
+    url: `${base_url}/contact-us`,
     siteName: "Karnal Web Tech",
     images: [
       {
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     images: ["/assets/contact-us.webp"],
   },
   alternates: {
-    canonical: `/contact-us`,
+    canonical: `${base_url}/contact-us`,
   },
 };
 
