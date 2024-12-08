@@ -1,19 +1,59 @@
+import { generateSchema } from "@/lib/service/schemas/generateSchema";
 import Index from "@/module/privacy-policy/Index";
 import { Metadata } from "next";
-
+import { JsonLd } from "react-schemaorg";
+import { WebPage, BreadcrumbList } from "schema-dts";
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
-  description: 'Explore our portfolio of innovative projects across various industries.',
+  title: "Privacy Policy",
+  description:
+    "Read Karnal Web Tech's Privacy Policy to understand how we collect, use, and protect your personal information. Your privacy is our priority.",
+  keywords: ["privacy-policy"],
   openGraph: {
-    title: 'Our Projects | Company Name',
-    description: 'Explore our portfolio of innovative projects across various industries.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Our Projects' }],
+    title: "Privacy Policy",
+    description:
+      "Read Karnal Web Tech's Privacy Policy to understand how we collect, use, and protect your personal information. Your privacy is our priority.",
+    url: `/privacy-policy`,
+    siteName: "Karnal Web Tech",
+    images: [
+      {
+        url: "/assets/privacy-policy.webp",
+        width: 1200,
+        height: 630,
+        alt: "Karnal Web tech contact-us",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
   },
-}
+  twitter: {
+    card: "summary_large_image",
+    site: "@KarnalWebTech",
+    creator: "@KarnalWebTech",
+    title: "Privacy Policy",
+    description:
+      "Read Karnal Web Tech's Privacy Policy to understand how we collect, use, and protect your personal information. Your privacy is our priority.",
+    images: ["/assets/privacy-policy.webp"],
+  },
+  alternates: {
+    canonical: `/privacy-policy`,
+  },
+};
 export default function PrivacyPolicy() {
-  return(
-    <div className="bg-gray-100">
-      <Index/>
-    </div>
-  )
+  const schema: any = generateSchema({
+    title: "Privacy Policy",
+    description:
+      "Read Karnal Web Tech's Privacy Policy to understand how we collect, use, and protect your personal information. Your privacy is our priority.",
+    slug: "privacy-policy",
+    path: "/assets/privacy-policy.webp",
+  });
+  return (
+    <>
+      {" "}
+      {schema[0] && <JsonLd<WebPage> item={schema[0]} />}
+      {schema[1] && <JsonLd<BreadcrumbList> item={schema[1]} />}
+      <div className="bg-gray-100">
+        <Index />
+      </div>
+    </>
+  );
 }

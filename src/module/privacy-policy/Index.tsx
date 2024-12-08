@@ -1,3 +1,4 @@
+import { address, contact_number, email } from "@/paths";
 import Link from "next/link";
 
 export default function Index() {
@@ -117,19 +118,16 @@ export default function Index() {
           <div className="mt-4 space-y-2">
             <p>
               <strong>Email:</strong>{" "}
-              <Link
-                href="mailto:karnalwebtech@gmail.com"
-                className="text-blue-600"
-              >
-                karnalwebtech@gmail.com
+              <Link href={`mailto:${email}`} className="text-blue-600">
+                {email}
               </Link>
             </p>
             <p>
-              <strong>Phone:</strong>{" "}
-              <Link href={"tel:+918816041566"}>+918816041566</Link>
+              <strong>Phone:</strong>
+              <Link href={`tel:${contact_number}`}>{contact_number}</Link>
             </p>
             <p>
-              <strong>Address:</strong> Karnal Web Tech, Karnal, Haryana, India
+              <strong>Address:</strong> {address}
             </p>
           </div>
         </section>

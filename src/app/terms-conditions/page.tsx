@@ -1,7 +1,51 @@
+import { generateSchema } from "@/lib/service/schemas/generateSchema";
+import { address, contact_number, email } from "@/paths";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
-
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description:
+    "Review Karnal Web Tech's Terms and Conditions for details on using our web design, development, and SEO services. Stay informed about your rights and responsibilities.",
+  keywords: ["terms-conditions"],
+  openGraph: {
+    title: "Terms & Conditions",
+    description:
+      "Review Karnal Web Tech's Terms and Conditions for details on using our web design, development, and SEO services. Stay informed about your rights and responsibilities.",
+    url: `/terms-conditions`,
+    siteName: "Karnal Web Tech",
+    images: [
+      {
+        url: "/assets/terms-conditions.webp",
+        width: 1200,
+        height: 630,
+        alt: "Karnal Web tech terms-conditions",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@KarnalWebTech",
+    creator: "@KarnalWebTech",
+    title: "Terms & Conditions",
+    description:
+      "Review Karnal Web Tech's Terms and Conditions for details on using our web design, development, and SEO services. Stay informed about your rights and responsibilities.",
+    images: ["/assets/terms-conditions.webp"],
+  },
+  alternates: {
+    canonical: `/terms-conditions`,
+  },
+};
 const TermsAndConditions = () => {
+  const schema: any = generateSchema({
+    title: "Terms & Conditions",
+    description:
+      "Review Karnal Web Tech's Terms and Conditions for details on using our web design, development, and SEO services. Stay informed about your rights and responsibilities.",
+    slug: "terms-conditions",
+    path: "/assets/terms-conditions.webp",
+  });
   return (
     <div className="bg-gray-100 text-gray-800">
       <div className="bg-black text-white py-6">
@@ -15,10 +59,13 @@ const TermsAndConditions = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
           <p className="text-gray-700 leading-6">
-            Welcome to <span className="font-bold">Karnal Web Tech</span>. By
-            accessing or using our website, you agree to be bound by these Terms
-            and Conditions. If you do not agree, please refrain from using our
-            services.
+            Welcome to
+            <Link href={"/"}>
+              <span className="font-bold">Karnal web tech</span>
+            </Link>
+            . By accessing or using our website, you agree to be bound by these
+            Terms and Conditions. If you do not agree, please refrain from using
+            our services.
           </p>
         </section>
 
@@ -43,12 +90,13 @@ const TermsAndConditions = () => {
 
         {/* Intellectual Property */}
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">
-            Intellectual Property
-          </h2>
+          <h2 className="text-2xl font-semibold mb-4">Intellectual Property</h2>
           <p className="text-gray-700 leading-6">
-            All content, logos, and trademarks displayed on this website are
-            the property of <span className="font-bold">Karnal Web Tech</span>.
+            All content, logos, and trademarks displayed on this website are the
+            property of
+            <Link href={"/"}>
+              <span className="font-bold"> Karnal Web Tech</span>.
+            </Link>
             You may not reproduce, distribute, or create derivative works
             without prior written consent.
           </p>
@@ -56,7 +104,9 @@ const TermsAndConditions = () => {
 
         {/* Limitation of Liability */}
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Limitation of Liability</h2>
+          <h2 className="text-2xl font-semibold mb-4">
+            Limitation of Liability
+          </h2>
           <p className="text-gray-700 leading-6">
             Karnal Web Tech is not liable for any damages resulting from your
             use of the website or reliance on the information provided.
@@ -91,20 +141,20 @@ const TermsAndConditions = () => {
           <div className="mt-4 space-y-2">
             <p>
               <strong>Email:</strong>{" "}
-              <a href="mailto:info@karnalwebtech.com" className="text-blue-600">
-                info@karnalwebtech.com
-              </a>
+              <Link href={`mailto:${email}`} className="text-blue-600">
+                {email}
+              </Link>
             </p>
             <p>
-            <strong>Phone:</strong> <Link href={"tel:+918816041566"}>+918816041566</Link>
+              <strong>Phone:</strong>{" "}
+              <Link href={`tel:${contact_number}`}>{contact_number}</Link>
             </p>
             <p>
-              <strong>Address:</strong> Karnal Web Tech, Karnal, Haryana, India
+              <strong>Address:</strong> {address}
             </p>
           </div>
         </section>
       </div>
-
     </div>
   );
 };
