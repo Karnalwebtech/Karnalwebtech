@@ -43,7 +43,7 @@ const Sidebar = ({ searchQuery, setSearchQuery, apidata }: SidebarProps) => {
                 <CardContent>
                     {isLoading ? <SkeletonLinesCard perPage={9} height={3} /> :
                         categorieData?.result?.map((item: any, i: number) => (
-                            <p key={i}> <Link href={item?.slug}>{item?.title}</Link></p>
+                            <p key={i}> <Link href={item?.slug} prefetch={true}>{item?.title}</Link></p>
                         ))}
                 </CardContent>
             </Card>

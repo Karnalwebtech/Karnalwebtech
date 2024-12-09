@@ -60,7 +60,7 @@ const TermsAndConditions = () => {
           <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
           <p className="text-gray-700 leading-6">
             Welcome to
-            <Link href={"/"}>
+            <Link href={"/"}> prefetch={true}
               <span className="font-bold">Karnal web tech</span>
             </Link>
             . By accessing or using our website, you agree to be bound by these
@@ -94,7 +94,7 @@ const TermsAndConditions = () => {
           <p className="text-gray-700 leading-6">
             All content, logos, and trademarks displayed on this website are the
             property of
-            <Link href={"/"}>
+            <Link href={"/"}> prefetch={true}
               <span className="font-bold"> Karnal Web Tech</span>.
             </Link>
             You may not reproduce, distribute, or create derivative works
@@ -141,7 +141,7 @@ const TermsAndConditions = () => {
           <div className="mt-4 space-y-2">
             <p>
               <strong>Email:</strong>{" "}
-              <Link href={`mailto:${email}`} className="text-blue-600">
+              <Link href={`mailto:${email}`}  className="text-blue-600">
                 {email}
               </Link>
             </p>

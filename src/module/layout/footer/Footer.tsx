@@ -18,12 +18,12 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
-              <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Projects</Link>
-              <Link href="/about-us" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</Link>
-              <Link href="/contact-us" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
-              <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy policy</Link>
-              <Link href="/terms-conditions " className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms & conditions </Link>
-              <Link href="/faq " className="text-sm text-muted-foreground hover:text-foreground transition-colors">Faq </Link>
+              <Link href="/projects" prefetch={true} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Projects</Link>
+              <Link href="/about-us" prefetch={true} className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</Link>
+              <Link href="/contact-us" prefetch={true} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
+              <Link href="/privacy-policy" prefetch={true} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy policy</Link>
+              <Link href="/terms-conditions " prefetch={true} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms & conditions </Link>
+              <Link href="/faq " prefetch={true} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Faq </Link>
             </nav>
           </div>
           <div className="space-y-4">
@@ -38,7 +38,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
           <p className="text-sm text-muted-foreground">© 2023 Karnalwebtech. All rights reserved.</p>
           <div className="flex space-x-4">
-            <Link target="__blank" href="https://www.linkedin.com/in/karnalwebtech" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link target="__blank"  href="https://www.linkedin.com/in/karnalwebtech" className="text-muted-foreground hover:text-foreground transition-colors">
               <Linkedin className="w-5 h-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>

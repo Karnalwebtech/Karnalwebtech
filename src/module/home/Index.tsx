@@ -1,12 +1,16 @@
-import FAQAccordion from '@/components/common/FAQAccordion'
-import HeroSection from './HeroSection'
-import ServiceSection from './ServiceSecton'
-import TechnologyStack from './TechnologyStack'
-import ChooseUs from './ChooseUs'
-import OurProjects from './OurProjects'
-import OurBlog from './OurBlog'
-import ContsctUs from './ContsctUs'
-import { OptimizedImage } from '@/components/OptimizedImage'
+import { OptimizedImage } from '@/components/OptimizedImage';
+import dynamic from 'next/dynamic';
+
+// Dynamically import components
+const HeroSection = dynamic(() => import('./HeroSection'), { ssr: false });
+const ServiceSection = dynamic(() => import('./ServiceSecton'), { ssr: false });
+const TechnologyStack = dynamic(() => import('./TechnologyStack'), { ssr: false });
+const ChooseUs = dynamic(() => import('./ChooseUs'), { ssr: false });
+const OurProjects = dynamic(() => import('./OurProjects'), { ssr: false });
+const OurBlog = dynamic(() => import('./OurBlog'), { ssr: false });
+const FAQAccordion = dynamic(() => import('@/components/common/FAQAccordion'), { ssr: false });
+const ContsctUs = dynamic(() => import('./ContsctUs'), { ssr: false });
+
 
 export default function Home() {
   return (
@@ -35,6 +39,5 @@ export default function Home() {
       </section>
       <ContsctUs />
     </main>
-  )
+  );
 }
-

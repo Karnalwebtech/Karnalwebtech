@@ -78,7 +78,7 @@ const Search_section = () => {
                         {
                             filteredPages.length > 0 ?
                                 filteredPages.map((item: any, i: number) => (
-                                    <Link key={i} href={`/${item.slug}`} className='block w-full bg-gray-200 rounded-sm px-[6px] text-sm text-black hover:bg-black hover:text-gray-300 cursor-pointer py-[4px] my-[2px]'>{item.title}</Link>
+                                    <Link key={i} href={`/${item.slug}`} prefetch={true} className='block w-full bg-gray-200 rounded-sm px-[6px] text-sm text-black hover:bg-black hover:text-gray-300 cursor-pointer py-[4px] my-[2px]'>{item.title}</Link>
                                 ))
                                 : <p className='p-2'>No results found.</p>}
                     </div>

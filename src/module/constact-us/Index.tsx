@@ -79,7 +79,7 @@ export default function Index() {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="text-primary" />
-                <span><Link href={"tel:+918816041566"}>+91 8816041566</Link></span>
+                <span><Link href={"tel:+918816041566"} prefetch={true}>+91 8816041566</Link></span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="text-primary" />

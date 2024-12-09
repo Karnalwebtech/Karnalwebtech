@@ -18,13 +18,13 @@ export function Breadcrumbdata({ categorie }: BreadcrumbdataProps) {
         <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <Link href={'/'}>
+                    <Link href={'/'} prefetch={true}>
                         Home
                     </Link>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <Link href={`/${categorie?.slug}`}>
+                    <Link href={`/${categorie?.slug}`} prefetch={true}>
                         {categorie?.title}
                     </Link>
 

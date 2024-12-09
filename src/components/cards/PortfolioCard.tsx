@@ -21,7 +21,7 @@ export default function PortfolioCard({
                     title={item.title}
                     className="w-full h-[400px] border-none"
                 />
-                <Link href={item.description} target="_blank" rel="noopener noreferrer">{item.description}</Link>
+                <Link href={item.description} prefetch={true} target="_blank" rel="noopener noreferrer">{item.description}</Link>
             </div>
         </Card>
     )

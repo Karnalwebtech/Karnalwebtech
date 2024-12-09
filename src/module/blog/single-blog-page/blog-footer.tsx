@@ -13,7 +13,7 @@ const Blogfooter: React.FC<BlogfooterProps> = ({ apidata }) => {
             <ShareButtons shareUrl={`${apiUrl}/blog/${apidata?.slug}`} shareText={apidata?.title} />
             <div className='flex gap-2'>
                 {apidata?.tag?.map((tech: any) => (
-                    <Link key={tech._id} href={`/tag/${tech?.slug}`}>
+                    <Link key={tech._id} href={`/tag/${tech?.slug}`} prefetch={true}>
                         <Badge variant="outline" >{tech?.title}</Badge>
                     </Link>
                 ))}

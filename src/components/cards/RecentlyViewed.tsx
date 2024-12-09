@@ -64,7 +64,7 @@ export const RecentlyViewed = ({ apidata, page_title,path }: RecentlyViewedProps
                                 className="rounded-lg object-cover bg-cover"
                             />
                             <div>
-                                <Link href={`/${item?.categorie}/${item.id}`}>
+                                <Link href={`/${item?.categorie}/${item.id}`} prefetch={true}>
                                     <h3 className="text-sm font-medium line-clamp-2">{item?.title}</h3>
                                 </Link>
                                 <p className="text-xs text-muted-foreground"><TimeAgo time={item?.time}/></p>

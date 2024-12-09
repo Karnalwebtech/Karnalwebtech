@@ -40,7 +40,7 @@ const BlogCard = ({ data }: { data: any }) => {
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <Link href={`/blog/${project?.slug}`}>
+                            <Link href={`/blog/${project?.slug}`} prefetch={true}>
                                 <OptimizedImage
                                     src={project?.feature_image?.path}
                                     alt={project?.feature_image?.altText || project?.title}
@@ -55,7 +55,7 @@ const BlogCard = ({ data }: { data: any }) => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2, duration: 0.5 }}
                             >
-                                <Link href={`/blog/${project?.slug}`}>
+                                <Link href={`/blog/${project?.slug}`} prefetch={true}>
                                     <CardTitle className="text-xl  font-bold">{project.title}</CardTitle>
                                 </Link>
                             </motion.div>

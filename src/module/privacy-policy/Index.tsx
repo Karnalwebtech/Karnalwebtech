@@ -118,7 +118,7 @@ export default function Index() {
           <div className="mt-4 space-y-2">
             <p>
               <strong>Email:</strong>{" "}
-              <Link href={`mailto:${email}`} className="text-blue-600">
+              <Link href={`mailto:${email}`} prefetch={true}className="text-blue-600">
                 {email}
               </Link>
             </p>

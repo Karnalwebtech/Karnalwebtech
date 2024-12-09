@@ -22,7 +22,7 @@ export const RelatiedPost = ({ data,  page_title }: { data: any,  page_title: st
                             className="rounded-lg object-cover bg-cover"
                             />
                         <div>
-                            <Link href={`/${item?.categorie[0]?.slug}/${item?.slug}`}>
+                            <Link href={`/${item?.categorie[0]?.slug}/${item?.slug}`} prefetch={true}>
                                 <h3 className="text-sm font-medium line-clamp-2">{item?.title}</h3>
                             </Link>
                             <p className="text-xs text-muted-foreground"><TimeAgo time={item.updatedAt}/></p>
