@@ -6,8 +6,9 @@ import "./globals.css"; // Global CSS file
 import { Toaster } from "react-hot-toast";
 import Header from "@/module/layout/header/Header";
 import Footer from "@/module/layout/footer/Footer";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import StoreProvider from "@/store";
+import { base_url } from "@/paths";
 
 // Font configuration (optional)
 const montserrat_Alternates = Montserrat_Alternates({
@@ -17,8 +18,12 @@ const montserrat_Alternates = Montserrat_Alternates({
 interface RootLayoutProps {
   children: ReactNode;
 }
-export const viewport = "width=device-width, initial-scale=1";
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
 export const metadata: Metadata = {
+  metadataBase: new URL(base_url),
   title: {
     default:
       "Karnal Web Tech | Expert Web Development & Digital Solutions for Your Business",
@@ -55,7 +60,7 @@ export const metadata: Metadata = {
       "Karnal Web Tech | Expert Web Development & Digital Solutions for Your Business",
     description:
       "professional web development, innovative digital marketing, and cutting-edge IT solutions with Karnal Web Tech. Empowering businesses in Haryana to achieve online success with tailored strategies and expert support.",
-    url: "https://thesalesmens.com",
+    url: base_url,
     siteName: "KarnalWebTech",
     images: [
       {
@@ -79,9 +84,10 @@ export const metadata: Metadata = {
   robots: "index, follow",
   // viewport: "width=device-width, initial-scale=1",
   alternates: {
-    canonical: "https://thesalesmens.com",
+    canonical: base_url,
   },
 };
+
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (

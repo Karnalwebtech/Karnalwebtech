@@ -55,17 +55,19 @@ export default function Header() {
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <div className="h-[70px] w-[190px] mt-2 pb-2 relative">
             <Image
-              src="/assets/logo.png"
+              src="/assets/logo.webp"
               alt="Karnalwebtech"
               priority
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-contain"
+              quality={85}
             />
           </div>
         </Link>
 
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <Search_section/>
+          <Search_section />
           <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
             {navItems.map((item) => (
               <Link
