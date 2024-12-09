@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Montserrat_Alternates } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css"; // Global CSS file
 import { Toaster } from "react-hot-toast";
 import Header from "@/module/layout/header/Header";
@@ -9,7 +9,16 @@ import Footer from "@/module/layout/footer/Footer";
 import type { Metadata, Viewport } from "next";
 import StoreProvider from "@/store";
 import { base_url } from "@/paths";
+import { useReportWebVitals } from "next/web-vitals";
 
+export function WebVitals() {
+  useReportWebVitals((metric) => {
+    console.log(metric);
+    // You can send this data to your analytics service
+  });
+
+  return null;
+}
 // Font configuration (optional)
 const montserrat_Alternates = Montserrat_Alternates({
   subsets: ["latin"],
@@ -19,7 +28,7 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
 };
 export const metadata: Metadata = {
@@ -88,19 +97,19 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={montserrat_Alternates.className}>
+        <WebVitals />
         <StoreProvider>
-          <Header /> 
+          <Header />
           {children}
           <Toaster />
           <Footer />
-        </StoreProvider> 
+        </StoreProvider>
         <Analytics />
-        <SpeedInsights/>   
+        <SpeedInsights />
       </body>
     </html>
   );
