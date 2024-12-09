@@ -9,16 +9,8 @@ import Footer from "@/module/layout/footer/Footer";
 import type { Metadata, Viewport } from "next";
 import StoreProvider from "@/store";
 import { base_url } from "@/paths";
-import { useReportWebVitals } from "next/web-vitals";
+import { WebVitals } from "@/components/web-vitals";
 
-export function WebVitals() {
-  useReportWebVitals((metric) => {
-    console.log(metric);
-    // You can send this data to your analytics service
-  });
-
-  return null;
-}
 // Font configuration (optional)
 const montserrat_Alternates = Montserrat_Alternates({
   subsets: ["latin"],

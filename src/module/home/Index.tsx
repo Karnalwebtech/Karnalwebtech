@@ -5,35 +5,35 @@ import dynamic from "next/dynamic";
 // Dynamically import components
 const HeroSection = dynamic(() => import("./HeroSection"), {
   loading: () => <Loading />,
-  ssr: true,
+  ssr: false,
 });
 const ServiceSection = dynamic(() => import("./ServiceSecton"), {
   loading: () => <Loading />,
-  ssr: true,
+  ssr: false,
 });
 const TechnologyStack = dynamic(() => import("./TechnologyStack"), {
   loading: () => <Loading />,
-  ssr: true,
+  ssr: false,
 });
 const ChooseUs = dynamic(() => import("./ChooseUs"), {
   loading: () => <Loading />,
-  ssr: true,
+  ssr: false,
 });
 const OurProjects = dynamic(() => import("./OurProjects"), {
   loading: () => <Loading />,
-  ssr: true,
+  ssr: false,
 });
 const OurBlog = dynamic(() => import("./OurBlog"), {
   loading: () => <Loading />,
-  ssr: true,
+  ssr: false,
 });
 const FAQAccordion = dynamic(() => import("@/components/common/FAQAccordion"), {
   loading: () => <Loading />,
-  ssr: true,
+  ssr: false,
 });
 const ContsctUs = dynamic(() => import("./ContsctUs"), {
   loading: () => <Loading />,
-  ssr: true,
+  ssr: false,
 });
 
 export default function Home() {
