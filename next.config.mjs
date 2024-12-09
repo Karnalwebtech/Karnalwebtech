@@ -3,6 +3,11 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  reactStrictMode: true, // Helps in identifying React-related issues
+  swcMinify: true,       // Enables faster minification with SWC
+  experimental: {
+    optimizeCss: true,    // Optimizes CSS (experimental)
+  },
   images: {
     remotePatterns: [
       {
