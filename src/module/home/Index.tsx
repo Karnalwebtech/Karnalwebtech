@@ -1,16 +1,40 @@
-import { OptimizedImage } from '@/components/OptimizedImage';
-import dynamic from 'next/dynamic';
+import Loading from "@/components/common/Loading";
+import { OptimizedImage } from "@/components/OptimizedImage";
+import dynamic from "next/dynamic";
 
 // Dynamically import components
-const HeroSection = dynamic(() => import('./HeroSection'), { ssr: false });
-const ServiceSection = dynamic(() => import('./ServiceSecton'), { ssr: false });
-const TechnologyStack = dynamic(() => import('./TechnologyStack'), { ssr: false });
-const ChooseUs = dynamic(() => import('./ChooseUs'), { ssr: false });
-const OurProjects = dynamic(() => import('./OurProjects'), { ssr: false });
-const OurBlog = dynamic(() => import('./OurBlog'), { ssr: false });
-const FAQAccordion = dynamic(() => import('@/components/common/FAQAccordion'), { ssr: false });
-const ContsctUs = dynamic(() => import('./ContsctUs'), { ssr: false });
-
+const HeroSection = dynamic(() => import("./HeroSection"), {
+  loading: () => <Loading />,
+  ssr: true,
+});
+const ServiceSection = dynamic(() => import("./ServiceSecton"), {
+  loading: () => <Loading />,
+  ssr: true,
+});
+const TechnologyStack = dynamic(() => import("./TechnologyStack"), {
+  loading: () => <Loading />,
+  ssr: true,
+});
+const ChooseUs = dynamic(() => import("./ChooseUs"), {
+  loading: () => <Loading />,
+  ssr: true,
+});
+const OurProjects = dynamic(() => import("./OurProjects"), {
+  loading: () => <Loading />,
+  ssr: true,
+});
+const OurBlog = dynamic(() => import("./OurBlog"), {
+  loading: () => <Loading />,
+  ssr: true,
+});
+const FAQAccordion = dynamic(() => import("@/components/common/FAQAccordion"), {
+  loading: () => <Loading />,
+  ssr: true,
+});
+const ContsctUs = dynamic(() => import("./ContsctUs"), {
+  loading: () => <Loading />,
+  ssr: true,
+});
 
 export default function Home() {
   return (
