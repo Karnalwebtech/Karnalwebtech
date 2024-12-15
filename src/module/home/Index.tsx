@@ -45,22 +45,7 @@ export default function Home() {
       <ChooseUs />
       <OurProjects />
       <OurBlog />
-      <section className="max-w-[1180px] mx-auto px-4 py-12">
-        <div className="flex flex-col lg:flex-row items-center gap-8">
-          <div className="w-full lg:w-1/2">
-            <FAQAccordion />
-          </div>
-          <div className="w-full lg:w-1/2">
-            <OptimizedImage
-              src="/assets/16607.jpg"
-              alt="FAQ illustration"
-              width={600}
-              height={600}
-              className="rounded-lg"
-            />
-          </div>
-        </div>
-      </section>
+      <FAQAccordion />
       <ContsctUs />
     </main>
   );

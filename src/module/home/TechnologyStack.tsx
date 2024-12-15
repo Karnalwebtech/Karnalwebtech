@@ -49,7 +49,7 @@ export default function TechnologyStack() {
     }
 
     return (
-        <section className=" px-4 py-8 bg-white">
+        <section className="px-4 py-6 lg:py-8 bg-white">
 
             <div className="container mx-auto max-w-7xl">
                 <motion.div
@@ -61,7 +61,7 @@ export default function TechnologyStack() {
                     <h2 className="text-3xl font-bold tracking-tight text-black mb-4 md:text-4xl lg:text-5xl">
                         Our Technology Stack
                     </h2>
-                    <p className="text-muted-foreground text-sm max-w-[100%] lg:max-w-[70%] mx-auto">
+                    <p className="text-muted-foreground text-base max-w-[100%] lg:max-w-[70%] mx-auto">
                         At KarnalWebTech, we leverage a versatile and modern technology stack to deliver innovative, robust, and scalable solutions tailored to your needs. Here's an overview of the tools and frameworks we use:
                     </p>
                 </motion.div>

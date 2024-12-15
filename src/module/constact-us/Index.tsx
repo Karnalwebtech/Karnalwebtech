@@ -1,56 +1,10 @@
 'use client'
-
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Phone, Mail, Send } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
 import Link from 'next/link'
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
-})
-
-
+import ContactForm from './contact-form'
 export default function Index() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // In a real application, you would send this data to your server
-    console.log(values)
-    setIsSubmitted(true)
-  }
-
   return (
     <div className="container mx-auto px-4 py-8">
       <motion.h1
@@ -104,75 +58,12 @@ export default function Index() {
               <CardDescription>We'll get back to you as soon as possible.</CardDescription>
             </CardHeader>
             <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="Your message" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" className="bg-black hover:bg-white w-full">
-                    <Send className="mr-2 h-4 w-4" /> Send Message
-                  </Button>
-                </form>
-              </Form>
+              <ContactForm />
             </CardContent>
           </Card>
         </motion.div>
       </div>
-      {isSubmitted && (
-        <motion.div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-lg"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-          >
-            <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
-            <p>Your message has been sent successfully. We'll be in touch soon!</p>
-            <Button className="mt-4" onClick={() => setIsSubmitted(false)}>Close</Button>
-          </motion.div>
-        </motion.div>
-      )}
+
     </div>
   )
 }

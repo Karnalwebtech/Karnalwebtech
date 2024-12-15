@@ -28,7 +28,7 @@ export default function OurBlog() {
   const { data: apiData } = data || {};
 
   return (
-    <section className=" px-4 py-16">
+    <section className="px-6 py-8 lg:py-16">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -39,7 +39,7 @@ export default function OurBlog() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4 md:text-4xl lg:text-5xl">
             Our Blogs
           </h2>
-          <p className="text-muted-foreground text-sm max-w-[100%] lg:max-w-[70%] mx-auto">
+          <p className="text-muted-foreground text-base max-w-[100%] lg:max-w-[90%] mx-auto">
             Dive into expertly crafted articles on diverse topics, from technology advancements and entertainment updates to industry trends. Our blogs are designed to inform, inspire, and keep you ahead in a rapidly evolving digital landscape. Stay updated with fresh perspectives and in-depth analysis—your gateway to staying informed and inspired!
           </p>
         </motion.div>
@@ -48,13 +48,13 @@ export default function OurBlog() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid gap-8  md:grid-cols-3"
+          className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         >
           {isLoading ? [...Array(6)].map((_: any, i: number) => <SkeletonPostCard key={i} />) :
             apiData?.result?.map((project: any, i: number) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 50 }} 
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.05 }}

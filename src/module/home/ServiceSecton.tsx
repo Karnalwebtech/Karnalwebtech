@@ -99,13 +99,13 @@ export default function ServiceSection() {
   ), [])
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-8 lg:py-16 px-4">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl font-bold tracking-tight mb-4 md:text-4xl lg:text-5xl">
             What we do best
           </h2>
-          <p className="text-muted-foreground text-sm max-w-full lg:max-w-[70%] mx-auto">
+          <p className="text-muted-foreground text-base max-w-full lg:max-w-[70%] mx-auto">
             At KarnalWebTech, we excel in delivering top-notch services tailored to meet your business needs. Our diverse expertise ensures that we provide end-to-end solutions for your digital and creative challenges. Here's what we do best:
           </p>
         </div>
