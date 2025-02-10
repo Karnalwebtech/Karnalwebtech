@@ -1,17 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/(main)/page": "app/(main)/page.js",
-  "/robots.txt/route": "app/robots.txt/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/image-sitemap.xml/route": "app/image-sitemap.xml/route.js",
-  "/(blog)/[categorie]/page": "app/(blog)/[categorie]/page.js",
-  "/(blog)/blog/page": "app/(blog)/blog/page.js",
-  "/(legal)/privacy-policy/page": "app/(legal)/privacy-policy/page.js",
-  "/(main)/contact-us/page": "app/(main)/contact-us/page.js",
-  "/(main)/about-us/page": "app/(main)/about-us/page.js",
-  "/(main)/projects/page": "app/(main)/projects/page.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/(blog)/[categorie]/[postId]/page": "app/(blog)/[categorie]/[postId]/page.js",
-  "/(legal)/terms-conditions/page": "app/(legal)/terms-conditions/page.js",
-  "/faq/page": "app/faq/page.js"
+  "/(main)/page": "app/(main)/page.js"
 }

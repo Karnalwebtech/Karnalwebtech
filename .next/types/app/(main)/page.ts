@@ -1,4 +1,4 @@
-// File: D:\New folder\Karnalwebtech\src\app\(main)\page.tsx
+// File: D:\project 28-10-23\New folder (5)\invent\protfolio\src\app\(main)\page.tsx
 import * as entry from '../../../../src/app/(main)/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
